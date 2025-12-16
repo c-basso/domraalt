@@ -1,1 +1,273 @@
-domraalt.ru
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Первый всероссийский фестиваль альтовой домры "Альтовая домра: Pro Solo"</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f6f7f9;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    /* Top navigation (sticky) */
+    .topnav {
+      position: fixed;
+      top: 16px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      z-index: 120;
+      pointer-events: none;
+    }
+    .topnav .nav-inner {
+      max-width: 1200px;
+      width: 100%;
+      padding: 6px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      pointer-events: all;
+    }
+    .logo {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.2px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.95);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 10px;
+      transition: background 0.18s ease, transform 0.18s ease;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .nav-links a:hover { background: rgba(255,255,255,0.06); transform: translateY(-1px); }
+
+    header {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: #fff;
+      padding: 140px 20px 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(255,204,0,0.08), transparent 40%),
+                  radial-gradient(circle at 80% 80%, rgba(42,82,152,0.06), transparent 40%);
+      pointer-events: none;
+    }
+    header > * { position: relative; z-index: 1; }
+    header h1 { font-size: 48px; margin: 0 0 12px 0; font-weight: 800; letter-spacing: -0.5px; line-height: 1.05; }
+    header h2 { font-size: 28px; margin: 0 0 18px 0; font-weight: 500; color: #ffcc00; }
+    header p { font-size: 18px; max-width: 720px; margin: 0 auto 36px; opacity: 0.98; line-height: 1.7; }
+
+    section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+    section:nth-child(odd) { background: #fff; }
+    section h2 { font-size: 34px; margin: 0 0 30px 0; color: #1e3c72; font-weight: 700; position: relative; padding-bottom: 14px; }
+    section h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 4px; background: linear-gradient(90deg, #ffcc00, #ffa500); border-radius: 2px; }
+    section p { font-size: 16px; line-height: 1.8; color: #555; margin: 0 0 18px 0; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; margin-top: 20px; }
+    .card { background: #fff; border-radius: 14px; padding: 26px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04); transition: all 0.28s ease; display:flex; flex-direction:column; }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 18px 36px rgba(30,60,114,0.12); border-color: #ffd666; }
+    .card h3 { font-size: 18px; margin: 0 0 12px; color: #1e3c72; font-weight: 700; }
+    .card p { margin: 0; color: #666; font-size: 15px; }
+
+    footer { background: #1e3c72; color: #fff; padding: 60px 20px; text-align: center; border-top: 4px solid #ffcc00; }
+    footer p { margin: 10px 0; font-size: 14px; }
+    footer p:first-child { font-weight: 600; font-size: 15px; }
+
+    .btn { display:inline-block; margin-top: 30px; padding: 14px 36px; background: linear-gradient(135deg,#ffcc00,#ffa500); color:#000; font-weight:700; text-decoration:none; border-radius:50px; transition:all .22s ease; box-shadow: 0 6px 18px rgba(255,204,0,0.28); }
+    .btn:hover { transform: translateY(-3px); }
+
+    /* Reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(18px); transition: all 0.7s cubic-bezier(.2,.9,.2,1); }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* Back to top */
+    #backToTop { position: fixed; right: 18px; bottom: 18px; width: 48px; height: 48px; border-radius: 50%; background: #1e3c72; color: #fff; border: none; display:flex; align-items:center; justify-content:center; box-shadow: 0 6px 18px rgba(30,60,114,0.2); opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .18s ease; z-index: 140; }
+    #backToTop.show { opacity: 1; pointer-events: auto; transform: translateY(-6px); }
+
+    @media (max-width: 768px) {
+      .topnav { top: 10px; }
+      header { padding: 90px 18px 70px; }
+      header h1 { font-size: 28px; }
+      header h2 { font-size: 16px; }
+      header p { font-size: 15px; }
+      .nav-links { display: none; }
+      section { padding: 50px 16px; }
+      section h2 { font-size: 26px; }
+      .grid { gap: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header>
+    <div class="topnav" aria-hidden="false">
+      <div class="nav-inner">
+        <a class="logo" href="#">Альтовая домра</a>
+        <nav class="nav-links" aria-label="Главная навигация">
+          <a href="#about">О фестивале</a>
+          <a href="#program">Программа</a>
+          <a href="#participants">Участники</a>
+          <a href="#contacts">Контакты</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <h1>Первый всероссийский фестиваль альтовой домры</h1>
+      <h2>«Альтовая домра: Pro Solo»</h2>
+      <p>
+        Крупное культурно-образовательное событие для исполнителей на альтовой домре,
+        объединяющее талантливых участников, экспертов и зрителей со всей России.
+      </p>
+      <a href="#about" class="btn">Узнать больше</a>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <h2>О фестивале</h2>
+    <p>
+      Первый всероссийский фестиваль альтовой домры «Альтовая домра: Pro Solo» — это платформа для развития творчества,
+      обмена опытом и поддержки талантов. Фестиваль объединяет представителей
+      музыкального искусства, образования и творческих индустрий.
+    </p>
+  </section>
+
+  <!-- Goals -->
+  <section>
+    <h2>Цели и задачи</h2>
+    <div class="grid">
+      <div class="card">Поддержка и развитие талантливой молодежи</div>
+      <div class="card">Популяризация культурных и творческих инициатив</div>
+      <div class="card">Создание профессионального сообщества и нетворкинга</div>
+      <div class="card">Обмен опытом между регионами Российской Федерации</div>
+    </div>
+  </section>
+
+  <!-- Program -->
+  <section>
+    <h2>Программа фестиваля</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Образовательный блок</h3>
+        <p>Лекции, мастер-классы и дискуссии с экспертами.</p>
+      </div>
+      <div class="card">
+        <h3>Конкурсная программа</h3>
+        <p>Выступления и презентации участников фестиваля.</p>
+      </div>
+      <div class="card">
+        <h3>Культурные события</h3>
+        <p>Концерты, выставки и специальные мероприятия.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Participants -->
+  <section>
+    <h2>Участники</h2>
+    <p>
+      К участию приглашаются представители творческих профессий, студенты,
+      педагоги, эксперты и все, кто заинтересован в развитии культуры и искусства.
+    </p>
+  </section>
+
+  <!-- Partners -->
+  <section>
+    <h2>Партнеры и поддержка</h2>
+    <p>
+      Фестиваль реализуется при поддержке образовательных, культурных и
+      общественных организаций, а также партнеров из разных регионов России.
+    </p>
+  </section>
+
+  <!-- Contacts -->
+  <section>
+    <h2>Контакты</h2>
+    <p>Email: 1111oper@mail.ru</p>
+  </section>
+
+  <footer>
+    <p>© Первый всероссийский фестиваль альтовой домры «Альтовая домра: Pro Solo»</p>
+    <p>Все права защищены</p>
+  </footer>
+
+  <button id="backToTop" aria-label="Наверх">↑</button>
+
+  <script>
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e){
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Reveal sections on scroll
+    const sections = document.querySelectorAll('section');
+    sections.forEach(s => s.classList.add('reveal'));
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+    sections.forEach(s => obs.observe(s));
+
+    // Back to top button
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 320) backBtn.classList.add('show'); else backBtn.classList.remove('show');
+    });
+    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Update active nav link
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sectionMap = Array.from(sections).reduce((acc, s) => { acc[s.id] = s; return acc; }, {});
+    const navObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const id = entry.target.id;
+        if (!id) return;
+        const link = document.querySelector('.nav-links a[href="#' + id + '"]');
+        if (entry.isIntersecting) {
+          navLinks.forEach(l => l.style.opacity = '0.6');
+          if (link) link.style.opacity = '1';
+        }
+      });
+    }, { threshold: 0.35 });
+    sections.forEach(s => navObserver.observe(s));
+  </script>
+
+</body>
+</html>
