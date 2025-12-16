@@ -26,7 +26,7 @@
       right: 0;
       display: flex;
       justify-content: center;
-      z-index: 120;
+      z-index: 99999; /* ensure topnav is above transformed/stacked sections */
       pointer-events: none;
     }
     .topnav .nav-inner {
@@ -37,14 +37,33 @@
       align-items: center;
       justify-content: space-between;
       pointer-events: all;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* solid opaque background */
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(30,60,114,0.12);
+      position: relative; /* create stacking context above sections */
+      z-index: 100000;
+      transform: translateZ(0);
     }
     .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       color: #fff;
       text-decoration: none;
       font-weight: 700;
       font-size: 18px;
       letter-spacing: 0.2px;
     }
+    .logo-img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.04);
+      padding: 4px;
+      display: inline-block;
+    }
+    .logo-text { display: inline-block; color: #fff; }
     .nav-links {
       display: flex;
       gap: 14px;
@@ -63,31 +82,35 @@
 
     header {
       background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      background-color: #1e3c72; /* fallback solid color to ensure opacity */
       color: #fff;
       padding: 140px 20px 100px;
       text-align: center;
       position: relative;
       overflow: hidden;
+      isolation: isolate;
     }
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(circle at 20% 50%, rgba(255,204,0,0.08), transparent 40%),
-                  radial-gradient(circle at 80% 80%, rgba(42,82,152,0.06), transparent 40%);
-      pointer-events: none;
-    }
+    /* Remove decorative translucent overlay so header is fully opaque */
+    header::before { display: none; }
     header > * { position: relative; z-index: 1; }
-    header h1 { font-size: 48px; margin: 0 0 12px 0; font-weight: 800; letter-spacing: -0.5px; line-height: 1.05; }
+    header h1 { font-size: 48px; margin: 18px 0 6px 0; font-weight: 800; letter-spacing: -0.5px; line-height: 1.05; }
     header h2 { font-size: 28px; margin: 0 0 18px 0; font-weight: 500; color: #ffcc00; }
     header p { font-size: 18px; max-width: 720px; margin: 0 auto 36px; opacity: 0.98; line-height: 1.7; }
 
-    section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+    section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; z-index: 0; }
     section:nth-child(odd) { background: #fff; }
-    section h2 { font-size: 34px; margin: 0 0 30px 0; color: #1e3c72; font-weight: 700; position: relative; padding-bottom: 14px; }
+    section h2 { font-size: 34px; margin: 0 0 30px 0; color: #1e3c72; font-weight: 700; padding-bottom: 14px; }
+    /* Ensure anchored headings aren't hidden behind the fixed nav */
+    section h2 { scroll-margin-top: 96px; }
+    /* Add hidden spacer so headings don't get covered by fixed nav while scrolling */
+    section::before {
+      content: "";
+      display: block;
+      height: 96px; /* matches scroll-margin-top */
+      margin-top: -96px;
+      visibility: hidden;
+      pointer-events: none;
+    }
     section h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 4px; background: linear-gradient(90deg, #ffcc00, #ffa500); border-radius: 2px; }
     section p { font-size: 16px; line-height: 1.8; color: #555; margin: 0 0 18px 0; }
 
@@ -104,9 +127,9 @@
     .btn { display:inline-block; margin-top: 30px; padding: 14px 36px; background: linear-gradient(135deg,#ffcc00,#ffa500); color:#000; font-weight:700; text-decoration:none; border-radius:50px; transition:all .22s ease; box-shadow: 0 6px 18px rgba(255,204,0,0.28); }
     .btn:hover { transform: translateY(-3px); }
 
-    /* Reveal on scroll */
-    .reveal { opacity: 0; transform: translateY(18px); transition: all 0.7s cubic-bezier(.2,.9,.2,1); }
-    .reveal.visible { opacity: 1; transform: none; }
+    /* Hero large logo */
+    .hero-logo { display:flex; justify-content:center; margin-bottom: 6px; }
+    .hero-logo-img { width: 220px; height: auto; border-radius: 14px; box-shadow: 0 10px 30px rgba(30,60,114,0.18); border: 6px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); }
 
     /* Back to top */
     #backToTop { position: fixed; right: 18px; bottom: 18px; width: 48px; height: 48px; border-radius: 50%; background: #1e3c72; color: #fff; border: none; display:flex; align-items:center; justify-content:center; box-shadow: 0 6px 18px rgba(30,60,114,0.2); opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .18s ease; z-index: 140; }
@@ -114,14 +137,19 @@
 
     @media (max-width: 768px) {
       .topnav { top: 10px; }
-      header { padding: 90px 18px 70px; }
-      header h1 { font-size: 28px; }
-      header h2 { font-size: 16px; }
+      header { padding: 70px 18px 50px; }
+      header h1 { font-size: 22px; margin-top: 12px; }
+      header h2 { font-size: 14px; }
       header p { font-size: 15px; }
       .nav-links { display: none; }
       section { padding: 50px 16px; }
       section h2 { font-size: 26px; }
+      /* Smaller offset for mobile where header/topnav is shorter */
+      section h2 { scroll-margin-top: 72px; }
+      section::before { height: 72px; margin-top: -72px; }
       .grid { gap: 18px; }
+      .hero-logo-img { width: 120px; }
+      .logo-text { display: none; }
     }
   </style>
 </head>
@@ -131,7 +159,10 @@
   <header>
     <div class="topnav" aria-hidden="false">
       <div class="nav-inner">
-        <a class="logo" href="#">Альтовая домра</a>
+        <a class="logo" href="#">
+          <img src="img/logo.png" alt="Альтовая домра" class="logo-img" />
+          <span class="logo-text">Альтовая домра</span>
+        </a>
         <nav class="nav-links" aria-label="Главная навигация">
           <a href="#about">О фестивале</a>
           <a href="#program">Программа</a>
@@ -142,6 +173,9 @@
     </div>
 
     <div class="hero-content">
+      <div class="hero-logo">
+        <img src="img/logo.png" alt="Альтовая домра" class="hero-logo-img"/>
+      </div>
       <h1>Первый всероссийский фестиваль альтовой домры</h1>
       <h2>«Альтовая домра: Pro Solo»</h2>
       <p>
@@ -174,7 +208,7 @@
   </section>
 
   <!-- Program -->
-  <section>
+  <section id="program">
     <h2>Программа фестиваля</h2>
     <div class="grid">
       <div class="card">
@@ -193,7 +227,7 @@
   </section>
 
   <!-- Participants -->
-  <section>
+  <section id="participants">
     <h2>Участники</h2>
     <p>
       К участию приглашаются представители творческих профессий, студенты,
@@ -211,7 +245,7 @@
   </section>
 
   <!-- Contacts -->
-  <section>
+  <section id="contacts">
     <h2>Контакты</h2>
     <p>Email: 1111oper@mail.ru</p>
   </section>
