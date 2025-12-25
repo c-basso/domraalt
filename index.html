@@ -1,158 +1,625 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Первый всероссийский фестиваль альтовой домры "Альтовая домра: Pro Solo"</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sancreek&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
     }
+
     body {
       margin: 0;
-      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: "Roboto", sans-serif;
       line-height: 1.6;
       color: #333;
-      background: #f6f7f9;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+      background: #faf8f3 url('img/bg.png') center/cover repeat fixed;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
+
     /* Top navigation (sticky) */
     .topnav {
       position: fixed;
-      top: 16px;
+      top: 0;
       left: 0;
       right: 0;
       display: flex;
       justify-content: center;
-      z-index: 99999; /* ensure topnav is above transformed/stacked sections */
+      z-index: 99999;
+      /* ensure topnav is above transformed/stacked sections */
       pointer-events: none;
+      background: #f8f8ee;
+      border-radius: 0;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     }
+
     .topnav .nav-inner {
       max-width: 1200px;
       width: 100%;
-      padding: 6px 20px;
+      padding: 20px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       pointer-events: all;
-      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* solid opaque background */
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(30,60,114,0.12);
-      position: relative; /* create stacking context above sections */
+      position: relative;
+      /* create stacking context above sections */
       z-index: 100000;
       transform: translateZ(0);
     }
+
     .logo {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      color: #fff;
+      gap: 12px;
+      color: #333;
       text-decoration: none;
       font-weight: 700;
-      font-size: 18px;
+      font-size: 22px;
       letter-spacing: 0.2px;
+      height: 68px;
     }
+
     .logo-img {
-      width: 44px;
-      height: 44px;
+      /* width: 56px; */
+      height: 56px;
       object-fit: contain;
       border-radius: 8px;
-      background: rgba(255,255,255,0.04);
+      /* background: rgba(0, 0, 0, 0.04); */
       padding: 4px;
       display: inline-block;
     }
-    .logo-text { display: inline-block; color: #fff; }
+
+    .logo-domra {
+      height: 100px;
+      position: relative;
+      width: auto;
+      object-fit: contain;
+      display: inline-block;
+      transform: translateX(10px) rotate(32deg);
+    }
+
+    .logo-text {
+      display: inline-flex;
+      flex-direction: column;
+      line-height: 0.9;
+      font-family: "Pacifico", cursive;
+      font-size: 28px;
+      letter-spacing: 1px;
+      font-weight: 400;
+      color: #ff6b35;
+    }
+
+
+    .logo-pro-solo {
+      display: inline-block;
+      color: #ff8c42;
+      font-family: "Sancreek", serif;
+      font-size: 16px;
+      margin-left: 24px;
+      letter-spacing: 3px;
+    }
+
     .nav-links {
       display: flex;
-      gap: 14px;
+      gap: 18px;
       align-items: center;
     }
+
     .nav-links a {
-      color: rgba(255,255,255,0.95);
+      color: #333;
       text-decoration: none;
-      padding: 8px 12px;
+      padding: 12px 16px;
       border-radius: 10px;
       transition: background 0.18s ease, transform 0.18s ease;
       font-weight: 600;
-      font-size: 14px;
+      font-size: 16px;
     }
-    .nav-links a:hover { background: rgba(255,255,255,0.06); transform: translateY(-1px); }
+
+    .nav-links a:hover {
+      background: rgba(0, 0, 0, 0.08);
+      transform: translateY(-1px);
+    }
 
     header {
-      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-      background-color: #1e3c72; /* fallback solid color to ensure opacity */
-      color: #fff;
+      position: relative;
       padding: 140px 20px 100px;
       text-align: center;
       position: relative;
       overflow: hidden;
       isolation: isolate;
+      /* margin-bottom: 20px; */
     }
-    /* Remove decorative translucent overlay so header is fully opaque */
-    header::before { display: none; }
-    header > * { position: relative; z-index: 1; }
-    header h1 { font-size: 48px; margin: 18px 0 6px 0; font-weight: 800; letter-spacing: -0.5px; line-height: 1.05; }
-    header h2 { font-size: 28px; margin: 0 0 18px 0; font-weight: 500; color: #ffcc00; }
-    header p { font-size: 18px; max-width: 720px; margin: 0 auto 36px; opacity: 0.98; line-height: 1.7; }
 
-    section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; z-index: 0; }
-    section:nth-child(odd) { background: #fff; }
-    section h2 { font-size: 34px; margin: 0 0 30px 0; color: #1e3c72; font-weight: 700; padding-bottom: 14px; }
+    /* Remove decorative translucent overlay so header is fully opaque */
+    header::before {
+      content: '';
+      background: linear-gradient(to bottom, rgba(255, 140, 66, 1), rgba(255, 140, 66, 0));
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      filter: blur(4px);
+    }
+
+    header>* {
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 32px;
+      margin: 18px 0 6px 0;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.05;
+    }
+
+    header h2 {
+      font-size: 42px;
+      margin: 0 0 18px 0;
+      font-weight: bold;
+      color: #fff;
+      /* font-family: "Pacifico", cursive; */
+      text-shadow: -2px 3px 4px rgb(0 0 0 / 60%);
+    }
+
+    header p {
+      font-size: 18px;
+      max-width: 720px;
+      margin: 0 auto 36px;
+      opacity: 0.98;
+      line-height: 1.7;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto 20px;
+      z-index: 0;
+      background: #fff;
+      border-radius: 12px;
+      scroll-margin-top: 96px;
+    }
+
+    section h2 {
+      font-size: 34px;
+      margin: 0 0 20px 0;
+      color: #333;
+      font-weight: 700;
+      padding-bottom: 14px;
+    }
+
     /* Ensure anchored headings aren't hidden behind the fixed nav */
-    section h2 { scroll-margin-top: 96px; }
+    section h2 {
+      scroll-margin-top: 96px;
+    }
+
     /* Add hidden spacer so headings don't get covered by fixed nav while scrolling */
     section::before {
       content: "";
       display: block;
-      height: 96px; /* matches scroll-margin-top */
+      height: 96px;
+      /* matches scroll-margin-top */
       margin-top: -96px;
       visibility: hidden;
       pointer-events: none;
     }
-    section h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 4px; background: linear-gradient(90deg, #ffcc00, #ffa500); border-radius: 2px; }
-    section p { font-size: 16px; line-height: 1.8; color: #555; margin: 0 0 18px 0; }
 
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; margin-top: 20px; }
-    .card { background: #fff; border-radius: 14px; padding: 26px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04); transition: all 0.28s ease; display:flex; flex-direction:column; }
-    .card:hover { transform: translateY(-8px); box-shadow: 0 18px 36px rgba(30,60,114,0.12); border-color: #ffd666; }
-    .card h3 { font-size: 18px; margin: 0 0 12px; color: #1e3c72; font-weight: 700; }
-    .card p { margin: 0; color: #666; font-size: 15px; }
+    section p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #555;
+      margin: 0 0 18px 0;
+    }
 
-    footer { background: #1e3c72; color: #fff; padding: 60px 20px; text-align: center; border-top: 4px solid #ffcc00; }
-    footer p { margin: 10px 0; font-size: 14px; }
-    footer p:first-child { font-weight: 600; font-size: 15px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      margin-top: 20px;
+    }
 
-    .btn { display:inline-block; margin-top: 30px; padding: 14px 36px; background: linear-gradient(135deg,#ffcc00,#ffa500); color:#000; font-weight:700; text-decoration:none; border-radius:50px; transition:all .22s ease; box-shadow: 0 6px 18px rgba(255,204,0,0.28); }
-    .btn:hover { transform: translateY(-3px); }
+    .grid.participants-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 26px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      transition: all 0.28s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      margin: 0 0 12px;
+      color: #333;
+      font-weight: 700;
+    }
+
+    .card p {
+      margin: 0;
+      color: #666;
+      font-size: 15px;
+    }
+
+    .participant-card {
+      text-align: center;
+      align-items: center;
+    }
+
+    .participant-image {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+
+    .participant-name {
+      font-size: 20px;
+      margin: 0 0 8px;
+      color: #333;
+      font-weight: 700;
+    }
+
+    .participant-description {
+      margin: 0;
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    footer {
+      background: #333;
+      color: #fff;
+      padding: 25px 20px;
+      text-align: center;
+      border-top: 4px solid #ff8c42;
+    }
+
+    footer p {
+      margin: 10px 0;
+      font-size: 14px;
+    }
+
+    footer p:first-child {
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    footer p:last-child {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Contacts section */
+    .contacts-container {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 40px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .contact-image-wrapper {
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .contact-image {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+      flex-shrink: 0;
+      display: block;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .contact-header {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .contact-name {
+      font-size: 28px;
+      font-weight: 700;
+      color: #333;
+      margin: 0;
+      text-align: left;
+      line-height: 1.2;
+    }
+
+    .contact-badge {
+      display: block;
+      color: #666;
+      font-size: 15px;
+      font-weight: 400;
+      margin: 0;
+      text-align: left;
+      font-style: normal;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #333;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      transition: all 0.25s ease;
+      font-weight: 500;
+      font-size: 15px;
+      background: #f5f5f5;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .contact-link:hover {
+      background: #ff8c42;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 140, 66, 0.3);
+      border-color: #ff8c42;
+    }
+
+    .contact-link img {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.25s ease;
+    }
+
+    .contact-link:hover img {
+      transform: scale(1.1);
+    }
+
+    .contact-email {
+      color: #555;
+      font-size: 15px;
+      font-weight: 400;
+      margin: 0;
+      padding-top: 8px;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      width: 100%;
+    }
+
+    .contact-email a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .contact-email a:hover {
+      color: #ff8c42;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 14px 36px;
+      background: linear-gradient(135deg, #ff6b35, #ff8c42);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: all .22s ease;
+      box-shadow: 0 6px 18px rgba(255, 107, 53, 0.35);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
 
     /* Hero large logo */
-    .hero-logo { display:flex; justify-content:center; margin-bottom: 6px; }
-    .hero-logo-img { width: 220px; height: auto; border-radius: 14px; box-shadow: 0 10px 30px rgba(30,60,114,0.18); border: 6px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); }
+    .hero-logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 6px;
+    }
+
+    .hero-logo-img {
+      width: 220px;
+      height: auto;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(26, 95, 95, 0.2);
+      border: 6px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.02);
+    }
 
     /* Back to top */
-    #backToTop { position: fixed; right: 18px; bottom: 18px; width: 48px; height: 48px; border-radius: 50%; background: #1e3c72; color: #fff; border: none; display:flex; align-items:center; justify-content:center; box-shadow: 0 6px 18px rgba(30,60,114,0.2); opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .18s ease; z-index: 140; }
-    #backToTop.show { opacity: 1; pointer-events: auto; transform: translateY(-6px); }
+    #backToTop {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #333;
+      color: #fff;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 18px rgba(51, 51, 51, 0.25);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease, transform .18s ease;
+      z-index: 140;
+      cursor: pointer;
+    }
+
+    #backToTop.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(-6px);
+    }
 
     @media (max-width: 768px) {
-      .topnav { top: 10px; }
-      header { padding: 70px 18px 50px; }
-      header h1 { font-size: 22px; margin-top: 12px; }
-      header h2 { font-size: 14px; }
-      header p { font-size: 15px; }
-      .nav-links { display: none; }
-      section { padding: 50px 16px; }
-      section h2 { font-size: 26px; }
+      .topnav {
+        top: 0;
+      }
+
+      header {
+        padding: 70px 18px 50px;
+      }
+
+      header h1 {
+        font-size: 22px;
+        margin-top: 12px;
+      }
+
+      header h2 {
+        font-size: 14px;
+      }
+
+      header p {
+        font-size: 15px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      section {
+        padding: 30px 16px;
+        margin-bottom: 15px;
+      }
+
+      section h2 {
+        font-size: 26px;
+      }
+
       /* Smaller offset for mobile where header/topnav is shorter */
-      section h2 { scroll-margin-top: 72px; }
-      section::before { height: 72px; margin-top: -72px; }
-      .grid { gap: 18px; }
-      .hero-logo-img { width: 120px; }
-      .logo-text { display: none; }
+      section h2 {
+        scroll-margin-top: 72px;
+      }
+
+      section::before {
+        height: 72px;
+        margin-top: -72px;
+      }
+
+      .grid {
+        gap: 18px;
+      }
+
+      .grid.participants-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .participant-image {
+        height: 240px;
+      }
+
+      .hero-logo-img {
+        width: 120px;
+      }
+
+      .logo-text {
+        font-size: 18px;
+      }
+
+      .logo-domra {
+        height: 36px;
+      }
+
+      .logo-pro-solo {
+        display: none;
+      }
+
+      .contacts-container {
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+      }
+
+      .contact-image {
+        width: 140px;
+        height: 140px;
+      }
+
+      .contact-info {
+        align-items: center;
+        min-width: auto;
+        width: 100%;
+      }
+
+      .contact-header {
+        align-items: center;
+        text-align: center;
+      }
+
+      .contact-name {
+        text-align: center;
+        font-size: 24px;
+      }
+
+      .contact-badge {
+        text-align: center;
+        font-size: 14px;
+      }
+
+      .contact-links {
+        gap: 8px;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .contact-link {
+        padding: 10px 16px;
+        font-size: 14px;
+        flex: 1;
+        justify-content: center;
+        min-width: 120px;
+      }
+
+      .contact-link img {
+        width: 16px;
+        height: 16px;
+      }
+
+      .contact-email {
+        text-align: center;
+        padding-top: 12px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Hero -->
@@ -160,8 +627,12 @@
     <div class="topnav" aria-hidden="false">
       <div class="nav-inner">
         <a class="logo" href="#">
-          <img src="img/logo.png" alt="Альтовая домра" class="logo-img" />
-          <span class="logo-text">Альтовая домра</span>
+          <img src="img/domra.svg" alt="Домра" class="logo-domra" />
+          <span class="logo-text">
+            <span>альтовая</span>
+            <span>домра</span>
+          </span>
+          <span class="logo-pro-solo">PRO SOLO</span>
         </a>
         <nav class="nav-links" aria-label="Главная навигация">
           <a href="#about">О фестивале</a>
@@ -173,16 +644,13 @@
     </div>
 
     <div class="hero-content">
-      <div class="hero-logo">
-        <img src="img/logo.png" alt="Альтовая домра" class="hero-logo-img"/>
-      </div>
       <h1>Первый всероссийский фестиваль альтовой домры</h1>
       <h2>«Альтовая домра: Pro Solo»</h2>
       <p>
         Крупное культурно-образовательное событие для исполнителей на альтовой домре,
         объединяющее талантливых участников, экспертов и зрителей со всей России.
       </p>
-      <a href="#about" class="btn">Узнать больше</a>
+      <!-- <a href="#about" class="btn">Узнать больше</a> -->
     </div>
   </header>
 
@@ -229,10 +697,68 @@
   <!-- Participants -->
   <section id="participants">
     <h2>Участники</h2>
-    <p>
-      К участию приглашаются представители творческих профессий, студенты,
-      педагоги, эксперты и все, кто заинтересован в развитии культуры и искусства.
-    </p>
+    <div class="grid participants-grid">
+      <div class="card participant-card">
+        <img src="img/participants/churina.jpg" alt="Чурина Наталья Александровна" class="participant-image" />
+        <h3 class="participant-name">Чурина Наталья Александровна</h3>
+        <p class="participant-description">Художественный руководитель фестиваля, лауреат Всероссийских и международных конкурсов, солистка Андреевского оркестра</p>
+      </div>
+      <div class="card participant-card">
+        <img src="img/participants/gorobtsov.jpg" alt="Горобцов Михаил Анатольевич" class="participant-image" />
+        <h3 class="participant-name">Горобцов Михаил Анатольевич</h3>
+        <p class="participant-description">Народный артист РФ, профессор РАМ им. Гнесиных</p>
+      </div>
+      <div class="card participant-card">
+        <img src="img/participants/boganov.jpg" alt="Боганов Сергей Геннадьевич" class="participant-image" />
+        <h3 class="participant-name">Боганов Сергей Геннадьевич</h3>
+        <p class="participant-description">Мультиинструменталист, композитор, аранжировщик, звукорежиссер, г. Москва</p>
+      </div>
+      <div class="card participant-card">
+        <img src="img/participants/carpunkin.jpg" alt="Ярослав Карпунькин" class="participant-image" />
+        <h3 class="participant-name">Ярослав Карпунькин</h3>
+        <p class="participant-description">Лауреат международных конкурсов</p>
+      </div>
+      <div class="card participant-card">
+        <img src="img/participants/gerasimov.jpg" alt="Герасимов Алексей" class="participant-image" />
+        <h3 class="participant-name">Герасимов Алексей</h3>
+        <p class="participant-description">Лауреат IV Всероссийского музыкального конкурса, солист оркестра им. Н.П. Осипова, преподаватель ТМУ им. М.П. Мусоргского</p>
+      </div>
+      <div class="card participant-card">
+        <img src="img/participants/morozova.jpg" alt="Александра Морозова" class="participant-image" />
+        <h3 class="participant-name">Александра Морозова</h3>
+        <p class="participant-description">Лауреат международных конкурсов, артистка ГРКО</p>
+      </div>
+      <div class="card participant-card">
+        <img src="img/participants/absalamova.jpg" alt="Абсалямова Фарида Фаритовна" class="participant-image" />
+        <h3 class="participant-name">Абсалямова Фарида Фаритовна</h3>
+        <p class="participant-description">Лауреат международных конкурсов, преподаватель Казанского музыкального колледжа им. И. В. Аухадеева</p>
+      </div>
+      <div class="card participant-card">
+        <img src="img/participants/dubrovina.jpg" alt="Дубровина Наталья" class="participant-image" />
+        <h3 class="participant-name">Дубровина Наталья</h3>
+        <p class="participant-description">Лауреат международных конкурсов, артистка АОРНИ имени Н. Н. Некрасова</p>
+      </div>
+      <div class="card participant-card">
+        <img src="img/participants/lightsound.jpg" alt="Дуэт Легкий звук" class="participant-image" />
+        <h3 class="participant-name">Дуэт "Легкий звук"</h3>
+        <p class="participant-description">Любовь Городная и Екатерина Ломова, лауреаты международных конкурсов, артисты оркестра им. В.В. Андреева</p>
+      </div>
+      <div class="card participant-card">
+        <img src="img/participants/neverova_m.jpg" alt="Мария Неверова" class="participant-image" />
+        <h3 class="participant-name">Мария Неверова</h3>
+        <p class="participant-description">Лауреат международных конкурсов, артистка Андреевского оркестра</p>
+      </div>
+      <div class="card participant-card">
+        <img src="img/participants/neverova.jpg" alt="Неверова Юлия Александровна" class="participant-image" />
+        <h3 class="participant-name">Неверова Юлия Александровна</h3>
+        <p class="participant-description">Лауреат Всероссийских и международных конкурсов, солистка и концертмейстер группы альтовых домр оркестра им. Осипова, преподаватель МГИМ им. А.Г. Шнитке</p>
+      </div>
+      <div class="card participant-card">
+        <img src="img/participants/samohin.jpg" alt="Владимир Самохин" class="participant-image" />
+        <h3 class="participant-name">Владимир Самохин</h3>
+        <p class="participant-description">Лауреат международных конкурсов, солист АОРНИ им. Н. Н. Некрасова Телерадиоцентра «Орфей»</p>
+      </div>
+    </div>
   </section>
 
   <!-- Partners -->
@@ -247,7 +773,28 @@
   <!-- Contacts -->
   <section id="contacts">
     <h2>Контакты</h2>
-    <p>Email: 1111oper@mail.ru</p>
+    <div class="contacts-container">
+      <div class="contact-image-wrapper">
+        <img src="img/participants/churina.jpg" alt="Наталья Чурина" class="contact-image" />
+      </div>
+      <div class="contact-info">
+        <div class="contact-header">
+          <h3 class="contact-name">Наталья Чурина</h3>
+          <span class="contact-badge">Художественный руководитель фестиваля</span>
+        </div>
+        <div class="contact-links">
+          <a href="https://t.me/churinanatalia" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <img src="img/tg.svg" alt="Telegram" />
+            <span>Telegram</span>
+          </a>
+          <a href="https://vk.com/natasla" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <img src="img/vk.svg" alt="VK" />
+            <span>VK</span>
+          </a>
+        </div>
+        <p class="contact-email">Email: <a href="mailto:1111oper@mail.ru">1111oper@mail.ru</a></p>
+      </div>
+    </div>
   </section>
 
   <footer>
@@ -260,11 +807,17 @@
   <script>
     // Smooth scroll for internal links
     document.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', function(e){
+      link.addEventListener('click', function (e) {
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
           e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const offset = 96; // Height of fixed navigation
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
         }
       });
     });
@@ -304,4 +857,5 @@
   </script>
 
 </body>
+
 </html>
