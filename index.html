@@ -249,6 +249,16 @@
       flex-direction: column;
     }
 
+    a.card {
+      color: inherit;
+    }
+
+    a.card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(255, 140, 66, 0.25);
+      border-color: rgba(255, 140, 66, 0.3);
+    }
+
     .card h3 {
       font-size: 18px;
       margin: 0 0 12px;
@@ -860,18 +870,183 @@
   <!-- Program -->
   <section id="program">
     <h2>Программа фестиваля</h2>
-    <div class="grid">
-      <div class="card">
+    
+    <!-- Local Navigation -->
+    <div class="grid" style="margin-bottom: 40px;">
+      <a href="#educational-block" class="card" style="text-decoration: none; cursor: pointer;">
         <h3>Образовательный блок</h3>
         <p>Лекции, мастер-классы и дискуссии с экспертами.</p>
+      </a>
+      <a href="#competition-program" class="card" style="text-decoration: none; cursor: pointer;">
+        <h3>Концертная программа</h3>
+        <p>Выступления участников фестиваля.</p>
+      </a>
+      <a href="#cultural-events" class="card" style="text-decoration: none; cursor: pointer;">
+        <h3>Мероприятия</h3>
+        <p>Встреча с мастерами, презентации</p>
+      </a>
+    </div>
+
+    <!-- Day 1 -->
+    <div style="margin-bottom: 50px;">
+      <h3 style="font-size: 26px; color: #333; margin: 30px 0 20px 0; font-weight: 700; border-bottom: 2px solid #ff8c42; padding-bottom: 10px;">1-й день 31.01.2026 (суббота)</h3>
+      
+      <div id="educational-block" style="background: #f9f9f9; padding: 20px; border-radius: 10px; margin-bottom: 25px; scroll-margin-top: 120px;">
+        <h4 style="font-size: 20px; color: #333; margin: 0 0 10px 0; font-weight: 700;">САНКТ-ПЕТЕРБУРГСКОЕ МУЗЫКАЛЬНОЕ УЧИЛИЩЕ ИМ. МУСОРГСКОГО</h4>
+        <p style="margin: 0 0 15px 0; color: #666; font-size: 15px;">ул. Моховая, 36<br>Большой зал</p>
+        
+        <div style="margin-top: 20px;">
+          <p style="margin: 0 0 8px 0; font-weight: 600; color: #333;"><strong>12.00-12.10</strong><br>
+          Открытие фестиваля. Вступительное слово<br>
+          Наталья Чурина, художественный руководитель фестиваля<br>
+          Наталья Шкребко, профессор, Заслуженная артистка РФ<br>
+          Михаил Горобцов, профессор, Народный артист РФ</p>
+        </div>
+        
+        <div style="margin-top: 15px;">
+          <p style="margin: 0 0 8px 0; font-weight: 600; color: #333;"><strong>12.10-12.40</strong><br>
+          Постановка игрового аппарата на альтовой домре (мк)<br>
+          Н. Чурина (Санкт-Петербург)</p>
+        </div>
+        
+        <div style="margin-top: 15px;">
+          <p style="margin: 0 0 8px 0; font-weight: 600; color: #333;"><strong>12.40-13.10</strong><br>
+          Работа над произведением в классе альтового домриста (мк)<br>
+          Ю. Неверова (Москва)</p>
+        </div>
+        
+        <div style="margin-top: 15px;">
+          <p style="margin: 0 0 8px 0; font-weight: 600; color: #333;"><strong>13.10-13.30</strong><br>
+          Перерыв</p>
+        </div>
+        
+        <div style="margin-top: 15px;">
+          <p style="margin: 0 0 8px 0; font-weight: 600; color: #333;"><strong>13.30-14.00</strong><br>
+          К вопросу подготовки домриста-альтиста к конкурсу в области сольного и ансамблевого исполнительства (мк)<br>
+          Ф. Абсалямова (Казань)</p>
+        </div>
+        
+        <div style="margin-top: 15px;">
+          <p style="margin: 0 0 8px 0; font-weight: 600; color: #333;"><strong>14.00-14.30</strong><br>
+          Инновации в арсенале альтового домриста<br>
+          С. Боганов (Москва)</p>
+        </div>
+        
+        <div style="margin-top: 15px;">
+          <p style="margin: 0 0 8px 0; font-weight: 600; color: #333;"><strong>14.30-15.00</strong><br>
+          Несколько слов об искусстве исполнять музыку<br>
+          М. Горобцов (Москва)</p>
+        </div>
+        
+        <div style="margin-top: 15px;">
+          <p style="margin: 0 0 8px 0; font-weight: 600; color: #333;"><strong>15.00-16.00</strong><br>
+          Обед</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>Конкурсная программа</h3>
-        <p>Выступления и презентации участников фестиваля.</p>
+
+      <div id="cultural-events" style="background: #f9f9f9; padding: 20px; border-radius: 10px; margin-bottom: 25px; scroll-margin-top: 120px;">
+        <h4 style="font-size: 20px; color: #333; margin: 0 0 10px 0; font-weight: 700;">ШЕРЕМЕТЕВСКИЙ ДВОРЕЦ</h4>
+        <p style="margin: 0 0 15px 0; color: #666; font-size: 15px;">набережная реки Фонтанки, 34</p>
+        
+        <div style="margin-top: 20px;">
+          <p style="margin: 0 0 8px 0; font-weight: 600; color: #333;"><strong>16.00-17.00</strong><br>
+          Встреча с мастерами - Зверев, Байдаков, Харечкин, Юниор-домры. Медиаторы, струны, подставки — влияние на звук.</p>
+        </div>
+        
+        <div style="margin-top: 20px;">
+          <p style="margin: 0 0 15px 0; font-weight: 700; color: #ff8c42; font-size: 18px;"><strong>17.00-19.00</strong><br>
+          Концерт «Мастера звука»</p>
+          
+          <div style="margin-left: 20px; margin-top: 15px;">
+            <p style="margin: 0 0 10px 0; font-weight: 600; color: #333;">ПРОГРАММА КОНЦЕРТА</p>
+            <ol style="margin: 0; padding-left: 25px; line-height: 1.8;">
+              <li style="margin-bottom: 8px;">Ломова Екатерина - А. Пиоттух Монолог для альтовой домры</li>
+              <li style="margin-bottom: 8px;">Дуэт «Легкий звук» - Ломова Екатерина - Городная Любовь (домра малая) — Р. Фукс - Четыре дуэта<br>Л. Гурилев Русский танец</li>
+              <li style="margin-bottom: 8px;">Неверова Мария<br>Концертмейстер Лебединец Елизавета<br>Эрнст Блох. «Нигун» из цикла «Баал Шем»</li>
+              <li style="margin-bottom: 8px;">Князев Никита<br>Концертмейстер Курганова Анна<br>К.М. Вебер Адажио и рондо</li>
+              <li style="margin-bottom: 8px;">Статиенко Антон<br>Концертмейстер Курганова Анна<br>А. Петров Цыганская рапсодия</li>
+              <li style="margin-bottom: 8px;">Нота Людмила, Марышева Екатерина (домра малая)<br>Концертмейстер Сафина Лейла<br>Г. Свиридов. Скерцо из Трио</li>
+              <li style="margin-bottom: 8px;">Чурина Наталья, Семион Екатерина (арфа)<br>Маргарита Врубель. «Таинство» для домры и арфы</li>
+              <li style="margin-bottom: 8px;">Неверова Юлия<br>Концертмейстер Сафина Лейла<br>А. Бородин. Соната (I часть)</li>
+              <li style="margin-bottom: 8px;">Боганов Сергей<br>С. Боганов Каприсы из цикла «Медитации»</li>
+              <li style="margin-bottom: 8px;">Чурина Наталья<br>Концертмейстер Рулева Ольга<br>С. Цинцадзе "Грузинские напевы"<br>А. Танонов. «Петербургский грув» из цикла «Танончики»</li>
+              <li style="margin-bottom: 8px;">Все солисты - И. Альбенис Астурия</li>
+            </ol>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <h3>Культурные события</h3>
-        <p>Концерты, выставки и специальные мероприятия.</p>
+    </div>
+
+    <!-- Day 2 -->
+    <div style="margin-bottom: 50px;">
+      <h3 style="font-size: 26px; color: #333; margin: 30px 0 20px 0; font-weight: 700; border-bottom: 2px solid #ff8c42; padding-bottom: 10px;">2-й день 1.02.2026 (воскресенье)</h3>
+      
+      <div id="competition-program" style="background: #f9f9f9; padding: 20px; border-radius: 10px; margin-bottom: 25px; scroll-margin-top: 120px;">
+        <h4 style="font-size: 20px; color: #333; margin: 0 0 10px 0; font-weight: 700;">ШЕРЕМЕТЕВСКИЙ ДВОРЕЦ</h4>
+        <p style="margin: 0 0 15px 0; color: #666; font-size: 15px;">набережная реки Фонтанки, 34</p>
+        
+        <div style="margin-top: 20px;">
+          <p style="margin: 0 0 15px 0; font-weight: 700; color: #ff8c42; font-size: 18px;"><strong>12.00-13.30</strong><br>
+          Концерт «Путь к мастерству»</p>
+          
+          <div style="margin-left: 20px; margin-top: 15px;">
+            <p style="margin: 0 0 10px 0; font-weight: 600; color: #333;">ПРОГРАММА КОНЦЕРТА</p>
+            <ol style="margin: 0; padding-left: 25px; line-height: 1.8;">
+              <li style="margin-bottom: 12px;">Пьянкова София (17 лет)<br>СПбМУ им. М. П. Мусоргского<br>Преподаватель Чурина Наталья Александровна<br>И. С. Бах — Прелюдия из Сюиты для виолончели соло №1</li>
+              <li style="margin-bottom: 12px;">Самусева Мария (15 лет)<br>Охтинский центр эстетического воспитания<br>Преподаватель Иванова Елена Камильевна<br>Д. Скарлатти — Соната g-moll<br>Концертмейстер Калиничева Татьяна Олеговна</li>
+              <li style="margin-bottom: 12px;">Петренко Александра<br>РГПУ им. А. И. Герцена (1 курс магистратуры)<br>Преподаватель Чувашева Анна Юрьевна<br>Г. Ф. Гендель — Соната №3<br>Концертмейстер Козяр Татьяна Алексеевна<br>4 мин. 30 сек.</li>
+              <li style="margin-bottom: 12px;">Филиппова Беата (14 лет)<br>Музыкальный лицей<br>Преподаватель Саяпина Екатерина Витальевна<br>Д. Валентини — Престо<br>Концертмейстер Костенко Александра<br>6 мин.</li>
+              <li style="margin-bottom: 12px;">Зуева Кристина (15 лет)<br>Московская ДМШ им. Б. А. Чайковского<br>Преподаватель: Дубровина Наталья Александровна<br>Н. Паганини — Рондо из Сонаты №1 A-dur<br>Румынский народный танец «Жаворонок» в обработке М. Гнутова<br>Концертмейстер Сафина Лейла</li>
+              <li style="margin-bottom: 12px;">Сецен Полина (19 лет)<br>СПбМУ им. М. П. Мусоргского<br>Преподаватель Чурина Наталья Александровна<br>Д. Поппер — Тарантелла для виолончели и фортепиано<br>Концертмейстер Мусаэлов Артем Рафаэльевич</li>
+              <li style="margin-bottom: 12px;">Соловьева Василиса (15 лет)<br>Кингисеппская детская школа искусств<br>Преподаватель Алексеева Кристина Валерьевна<br>А. Шалов (обр.) — Русская народная песня «Не корите меня, не браните»<br>Концертмейстер:</li>
+              <li style="margin-bottom: 12px;">Худякова Варвара (14 лет)<br>Санкт-Петербургская детская школа искусств имени С.С. Прокофьева<br>Преподаватель Сучкова Анастасия Александровна<br>А. Рождествин — Фанданго<br>Концертмейстер Шуклина Елена Евгеньевна</li>
+              <li style="margin-bottom: 12px;">Жмуд Ксения (16 лет)<br>СПбМУ им. М. П. Мусоргского<br>Преподаватель Чурина Наталья Александровна<br>А. Шалов — Обработка русской народной песни «Тонкая рябина»<br>Концертмейстер Мусаэлов Артем Рафаэльевич</li>
+              <li style="margin-bottom: 12px;">Рогожникова Екатерина (16 лет)<br>ДМШ №17 им. А. Г. Рубинштейна<br>Преподаватель Фоминских Юлия<br>Я. Сибелиус — Грустный вальс<br>Г. Кассадо — Танец зелёного дьявола<br>Концертмейстер: Ковалева Елена Леонидовна</li>
+              <li style="margin-bottom: 12px;">Сысоева Лидия (15 лет)<br>Преподаватель Гуничева Ольга Ивановна<br>Лицей искусств «Санкт-Петербург»<br>Ф. Крейслер — Прелюдия и аллегро в стиле Пуньяни<br>Концертмейстер Щербинина Татьяна Александровна</li>
+              <li style="margin-bottom: 12px;">Чурина Наталья, Рулева Ольга (фортепиано)<br>Премьера И. Миняков — Обработка старинного романса Н. Харито «Хризантемы»</li>
+            </ol>
+          </div>
+        </div>
+        
+        <div style="margin-top: 20px;">
+          <p style="margin: 0 0 8px 0; font-weight: 600; color: #333;"><strong>13.30-14.00</strong><br>
+          Презентация сборников для альтовой домры</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 3 -->
+    <div style="margin-bottom: 50px;">
+      <h3 style="font-size: 26px; color: #333; margin: 30px 0 20px 0; font-weight: 700; border-bottom: 2px solid #ff8c42; padding-bottom: 10px;">3-й день 2.02.2026 (понедельник)</h3>
+      
+      <div style="background: #f9f9f9; padding: 20px; border-radius: 10px; margin-bottom: 25px;">
+        <h4 style="font-size: 20px; color: #333; margin: 0 0 10px 0; font-weight: 700;">ДОМ УЧЕНЫХ ИМ. М. Горького</h4>
+        <p style="margin: 0 0 15px 0; color: #666; font-size: 15px;">Дворцовая набережная, 26</p>
+        
+        <div style="margin-top: 20px;">
+          <p style="margin: 0 0 15px 0; font-weight: 700; color: #ff8c42; font-size: 18px;"><strong>19.00 — 20.30</strong><br>
+          Закрытие фестиваля. Концерт «Альтовая домра+»</p>
+          
+          <div style="margin-left: 20px; margin-top: 15px;">
+            <p style="margin: 0 0 10px 0; font-weight: 600; color: #333;">ПРОГРАММА КОНЦЕРТА</p>
+            <ol style="margin: 0; padding-left: 25px; line-height: 1.8;">
+              <li style="margin-bottom: 8px;">В. Насонов Фантазия на тему русской песни «Винный мой колодезь»</li>
+              <li style="margin-bottom: 8px;">М. Карл Вальс<br>Дуэт «Легкий звук» - Любовь Городная (домра малая) и Екатерина Ломова</li>
+              <li style="margin-bottom: 8px;">В. Бояшов «Монолог» для альтовой домры и фортепиано<br>Морозова Александра, Лебединец Елизавета (фортепиано)</li>
+              <li style="margin-bottom: 8px;">Евдокия Сандлер. Сюита для домры-альт и фортепиано «Меланхолия»<br>Самохин Владимир, Сандлер Нина (фортепиано)</li>
+              <li style="margin-bottom: 8px;">С. Цинцадзе Лале</li>
+              <li style="margin-bottom: 8px;">С. Цинцадзе Сачидао<br>Группа альтовых домр Андреевского оркестра<br>Камерный состав Андреевского оркестра, дирижер В. Фонин</li>
+              <li style="margin-bottom: 8px;">Е. Дербенко Концерт для альтовой домры с оркестром №2, 2 часть c каденцией Ф. Абсалямовой<br>солистка Абсалямова Фарида</li>
+              <li style="margin-bottom: 8px;">А. Эшпай Венгерские напевы<br>солистка Чурина Наталья</li>
+              <li style="margin-bottom: 8px;">А. Шалов Сыпь, Семен<br>солистка Дубровина Наталья</li>
+              <li style="margin-bottom: 8px;">А. Цыганков - В. Дитель Коробейники<br>солист Карпунькин Ярослав</li>
+              <li style="margin-bottom: 8px;">Н. Римский-Корсаков Пляска Скоморохов из оперы «Снегурочка»<br>солисты Абсалямова Фарида и Карпунькин Ярослав</li>
+              <li style="margin-bottom: 8px;">М. Броннер Романсы<br>солист Горобцов Михаил</li>
+              <li style="margin-bottom: 8px;">С. Боганов Мой каприс<br>солисты Боганов Сергей, Нефедов Георгий (балалайка), Телегин Василий (бас-гитара)</li>
+              <li style="margin-bottom: 8px;">А. Цыганков - С. Ирадье «Голубка»<br>солисты — альтовые домристы</li>
+            </ol>
+          </div>
+        </div>
       </div>
     </div>
   </section>
