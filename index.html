@@ -153,7 +153,7 @@
 
     header {
       position: relative;
-      padding: 140px 20px 100px;
+      padding: 140px 20px 10px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -256,6 +256,10 @@
       grid-template-columns: repeat(3, 1fr);
     }
 
+    .grid.partners-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
     .card {
       background: #fff;
       border-radius: 14px;
@@ -316,6 +320,73 @@
       color: #666;
       font-size: 14px;
       line-height: 1.6;
+    }
+
+    .partner-card {
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      min-height: 100px;
+    }
+
+    .partner-image {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      margin: 0 auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    a.partner-card {
+      text-decoration: none;
+    }
+
+    a.partner-card:hover .partner-image {
+      transform: scale(1.05);
+    }
+
+    .partner-text {
+      margin: 6px 0 0 0;
+      color: #666;
+      font-size: 10px;
+      line-height: 1.4;
+      text-align: center;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .partner-card-musorgskii {
+      background: linear-gradient(147deg, #310205, #732606);
+    }
+
+    .partner-card-scientists {
+      background: #45344A;
+    }
+
+    .partner-card-sheremet {
+      background: #F6F6F6;
+    }
+
+    .partner-card-sheremet .partner-image {
+      max-width: 140px;
+    }
+
+    .partner-card-sheremet .partner-text {
+      font-size: 9px;
+      text-transform: uppercase;
+      margin: 4px 0 0 0;
+    }
+
+    .partner-card-andreev {
+      background: linear-gradient(to bottom, #000000, #3f3e3e);
+    }
+
+    .partner-card-andreev .partner-image {
+      max-width: 140px;
     }
 
     footer {
@@ -530,6 +601,10 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
+      .grid.partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       /* Old logo responsive styles - commented out */
       /*
       .logo-domra {
@@ -654,6 +729,10 @@
         grid-template-columns: 1fr;
       }
 
+      .grid.partners-grid {
+        grid-template-columns: 1fr;
+      }
+
       .card {
         padding: 20px;
         border-radius: 10px;
@@ -682,6 +761,27 @@
       .participant-description {
         font-size: 13px;
         line-height: 1.5;
+      }
+
+      .partner-card {
+        padding: 12px;
+        min-height: 90px;
+      }
+
+      .partner-image {
+        max-width: 160px;
+      }
+
+      .partner-card-musorgskii .partner-image {
+        max-width: 110px;
+      }
+
+      .partner-card-sheremet .partner-image {
+        max-width: 110px;
+      }
+
+      .partner-card-andreev .partner-image {
+        max-width: 110px;
       }
 
       .contacts-container {
@@ -1111,7 +1211,7 @@
       </div>
     </div>
 
-    <div class="hero-content">
+    <div class="hero-content" style="display: none;">
       <h1>Первый всероссийский фестиваль альтовой домры</h1>
       <h2>«Альтовая домра: Pro Solo»</h2>
       <p>
@@ -1412,10 +1512,21 @@
   <!-- Partners -->
   <section>
     <h2>Партнеры и поддержка</h2>
-    <p>
-      Фестиваль реализуется при поддержке образовательных, культурных и
-      общественных организаций, а также партнеров из разных регионов России.
-    </p>
+    <div class="grid partners-grid">
+      <a href="https://musorgsky.ru/" target="_blank" rel="noopener noreferrer" class="card partner-card partner-card-musorgskii">
+        <img src="img/partners/musorgskii.png" alt="Санкт-Петербургское музыкальное училище имени М.П. Мусоргского" class="partner-image" />
+      </a>
+      <a href="https://theatremuseum.ru/filial/sheremetevskiy_dvorec_muzey_muzyki" target="_blank" rel="noopener noreferrer" class="card partner-card partner-card-sheremet">
+        <img src="img/partners/sheremet.png" alt="Шереметевский дворец — Музей музыки" class="partner-image" />
+        <p class="partner-text">Шереметевский дворец<br>Музей музыки</p>
+      </a>
+      <a href="https://xn----gtbe0ahc1bsp6b.xn--p1ai/" target="_blank" rel="noopener noreferrer" class="card partner-card partner-card-scientists">
+        <img src="img/partners/scientists.svg" alt="Дом ученых им. М. Горького" class="partner-image" />
+      </a>
+      <a href="https://andreyev-orchestra.ru/" target="_blank" rel="noopener noreferrer" class="card partner-card partner-card-andreev">
+        <img src="img/partners/andreev.svg" alt="Академический оркестр русских народных инструментов им. В.В. Андреева" class="partner-image" />
+      </a>
+    </div>
   </section>
 
   <!-- Contacts -->
