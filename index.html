@@ -1099,7 +1099,7 @@
       <div class="program-day-content active">
         <div id="educational-block" class="program-event-block">
           <h4 class="program-venue-header">САНКТ-ПЕТЕРБУРГСКОЕ МУЗЫКАЛЬНОЕ УЧИЛИЩЕ ИМ. МУСОРГСКОГО</h4>
-          <p class="program-venue-address">ул. Моховая, 36<br>Большой зал</p>
+          <p class="program-venue-address">ул. Моховая, 36 Большой зал</p>
           
           <div class="program-time-block">
             <p class="program-time-text"><strong>12.00-12.10</strong><br>
@@ -1164,8 +1164,8 @@
             Концерт «Мастера звука»</p>
             
             <div class="program-concert-list">
-              <button type="button" class="program-concert-list-title active">ПРОГРАММА КОНЦЕРТА</button>
-              <div class="program-concert-list-content active">
+              <button type="button" class="program-concert-list-title">ПРОГРАММА КОНЦЕРТА</button>
+              <div class="program-concert-list-content">
                 <ol>
                   <li>Ломова Екатерина - А. Пиоттух Монолог для альтовой домры</li>
                   <li>Дуэт «Легкий звук» - Ломова Екатерина - Городная Любовь (домра малая) — Р. Фукс - Четыре дуэта<br>Л. Гурилев Русский танец</li>
@@ -1200,8 +1200,8 @@
             Концерт «Путь к мастерству»</p>
             
             <div class="program-concert-list">
-              <button type="button" class="program-concert-list-title active">ПРОГРАММА КОНЦЕРТА</button>
-              <div class="program-concert-list-content active">
+              <button type="button" class="program-concert-list-title">ПРОГРАММА КОНЦЕРТА</button>
+              <div class="program-concert-list-content">
                 <ol>
                   <li class="large-spacing">Пьянкова София (17 лет)<br>СПбМУ им. М. П. Мусоргского<br>Преподаватель Чурина Наталья Александровна<br>И. С. Бах — Прелюдия из Сюиты для виолончели соло №1</li>
                   <li class="large-spacing">Самусева Мария (15 лет)<br>Охтинский центр эстетического воспитания<br>Преподаватель Иванова Елена Камильевна<br>Д. Скарлатти — Соната g-moll<br>Концертмейстер Калиничева Татьяна Олеговна</li>
@@ -1242,8 +1242,8 @@
             Закрытие фестиваля. Концерт «Альтовая домра+»</p>
             
             <div class="program-concert-list">
-              <button type="button" class="program-concert-list-title active">ПРОГРАММА КОНЦЕРТА</button>
-              <div class="program-concert-list-content active">
+              <button type="button" class="program-concert-list-title">ПРОГРАММА КОНЦЕРТА</button>
+              <div class="program-concert-list-content">
                 <ol>
                   <li>В. Насонов Фантазия на тему русской песни «Винный мой колодезь»</li>
                   <li>М. Карл Вальс<br>Дуэт «Легкий звук» - Любовь Городная (домра малая) и Екатерина Ломова</li>
@@ -1448,7 +1448,9 @@
     // Program accordion functionality
     const programDayHeaders = document.querySelectorAll('.program-day-header');
     programDayHeaders.forEach(header => {
-      header.addEventListener('click', function() {
+      header.addEventListener('click', function(e) {
+        e.preventDefault();
+        const scrollY = window.scrollY;
         const day = this.parentElement;
         const content = day.querySelector('.program-day-content');
         const isActive = this.classList.contains('active');
@@ -1469,13 +1471,20 @@
           this.classList.add('active');
           content.classList.add('active');
         }
+        
+        // Restore scroll position to prevent unwanted scrolling
+        requestAnimationFrame(() => {
+          window.scrollTo(0, scrollY);
+        });
       });
     });
 
     // Concert program list toggle functionality
     const concertListTitles = document.querySelectorAll('.program-concert-list-title');
     concertListTitles.forEach(button => {
-      button.addEventListener('click', function() {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const scrollY = window.scrollY;
         const listContainer = this.parentElement;
         const content = listContainer.querySelector('.program-concert-list-content');
         const isActive = this.classList.contains('active');
@@ -1488,6 +1497,11 @@
           this.classList.add('active');
           content.classList.add('active');
         }
+        
+        // Restore scroll position to prevent unwanted scrolling
+        requestAnimationFrame(() => {
+          window.scrollTo(0, scrollY);
+        });
       });
     });
   </script>
