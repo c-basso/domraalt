@@ -736,6 +736,197 @@
       }
     }
 
+    /* Program section styles */
+    .program-day {
+      margin-bottom: 50px;
+    }
+
+    .program-day-header {
+      font-size: 26px;
+      color: #333;
+      margin: 30px 0 20px 0;
+      font-weight: 700;
+      border-bottom: 2px solid #ff8c42;
+      padding-bottom: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: color 0.2s ease;
+      user-select: none;
+    }
+
+    .program-day-header:hover {
+      color: #ff8c42;
+    }
+
+    .program-day-header::after {
+      content: '▼';
+      font-size: 18px;
+      transition: transform 0.3s ease;
+      color: #ff8c42;
+    }
+
+    .program-day-header.active::after {
+      transform: rotate(180deg);
+    }
+
+    .program-day-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .program-day-content.active {
+      max-height: 10000px;
+    }
+
+    .program-event-block {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      scroll-margin-top: 120px;
+    }
+
+    .program-venue-header {
+      font-size: 20px;
+      color: #333;
+      margin: 0 0 10px 0;
+      font-weight: 700;
+    }
+
+    .program-venue-address {
+      margin: 0 0 15px 0;
+      color: #666;
+      font-size: 15px;
+    }
+
+    .program-time-block {
+      margin-top: 20px;
+    }
+
+    .program-time-block-small {
+      margin-top: 15px;
+    }
+
+    .program-time-text {
+      margin: 0 0 8px 0;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .program-concert-title {
+      margin: 0 0 15px 0;
+      font-weight: 700;
+      color: #ff8c42;
+      font-size: 18px;
+    }
+
+    .program-concert-list {
+      margin-left: 20px;
+      margin-top: 15px;
+    }
+
+    .program-concert-list-title {
+      margin: 0 0 10px 0;
+      font-weight: 600;
+      color: #333;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      user-select: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      background: transparent;
+      border: 1px solid transparent;
+      font-family: inherit;
+      font-size: inherit;
+      text-align: left;
+      width: 100%;
+    }
+
+    button.program-concert-list-title {
+      border: none;
+      outline: none;
+    }
+
+    .program-concert-list-title:hover {
+      background: rgba(255, 140, 66, 0.1);
+      border-color: rgba(255, 140, 66, 0.3);
+    }
+
+    .program-concert-list-title::after {
+      content: '▼';
+      font-size: 12px;
+      transition: transform 0.3s ease;
+      color: #ff8c42;
+    }
+
+    .program-concert-list-title.active::after {
+      transform: rotate(180deg);
+    }
+
+    .program-concert-list-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      margin-top: 0;
+    }
+
+    .program-concert-list-content.active {
+      max-height: 5000px;
+      margin-top: 10px;
+    }
+
+    .program-concert-list ol {
+      margin: 0;
+      padding-left: 25px;
+      line-height: 1.8;
+    }
+
+    .program-concert-list li {
+      margin-bottom: 8px;
+    }
+
+    .program-concert-list li.large-spacing {
+      margin-bottom: 12px;
+    }
+
+    .program-ticket-link {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 24px;
+      background: linear-gradient(135deg, #ff6b35, #ff8c42);
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.25s ease;
+      font-size: 15px;
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    }
+
+    .program-ticket-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
+    }
+
+    .program-free-label {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 8px 20px;
+      background: #4caf50;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 14px;
+      box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+    }
+
     /* Small mobile devices */
     @media (max-width: 480px) {
       body {
@@ -808,6 +999,37 @@
         min-width: 120px;
         padding: 10px 16px;
       }
+
+      .program-day-header {
+        font-size: 22px;
+        margin: 20px 0 15px 0;
+      }
+
+      .program-event-block {
+        padding: 16px;
+      }
+
+      .program-venue-header {
+        font-size: 18px;
+      }
+
+      .program-ticket-link {
+        padding: 10px 20px;
+        font-size: 14px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+      }
+
+      .program-free-label {
+        padding: 8px 16px;
+        font-size: 13px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+      }
     }
   </style>
 </head>
@@ -872,163 +1094,175 @@
     <h2>Программа фестиваля</h2>
 
     <!-- Day 1 -->
-    <div style="margin-bottom: 50px;">
-      <h3 style="font-size: 26px; color: #333; margin: 30px 0 20px 0; font-weight: 700; border-bottom: 2px solid #ff8c42; padding-bottom: 10px;">1-й день 31.01.2026 (суббота)</h3>
-      
-      <div id="educational-block" style="background: #f9f9f9; padding: 20px; border-radius: 10px; margin-bottom: 25px; scroll-margin-top: 120px;">
-        <h4 style="font-size: 20px; color: #333; margin: 0 0 10px 0; font-weight: 700;">САНКТ-ПЕТЕРБУРГСКОЕ МУЗЫКАЛЬНОЕ УЧИЛИЩЕ ИМ. МУСОРГСКОГО</h4>
-        <p style="margin: 0 0 15px 0; color: #666; font-size: 15px;">ул. Моховая, 36<br>Большой зал</p>
-        
-        <div style="margin-top: 20px;">
-          <p style="margin: 0 0 8px 0; font-weight: 600; color: #333;"><strong>12.00-12.10</strong><br>
-          Открытие фестиваля. Вступительное слово<br>
-          Наталья Чурина, художественный руководитель фестиваля<br>
-          Наталья Шкребко, профессор, Заслуженная артистка РФ<br>
-          Михаил Горобцов, профессор, Народный артист РФ</p>
-        </div>
-        
-        <div style="margin-top: 15px;">
-          <p style="margin: 0 0 8px 0; font-weight: 600; color: #333;"><strong>12.10-12.40</strong><br>
-          Постановка игрового аппарата на альтовой домре (мк)<br>
-          Н. Чурина (Санкт-Петербург)</p>
-        </div>
-        
-        <div style="margin-top: 15px;">
-          <p style="margin: 0 0 8px 0; font-weight: 600; color: #333;"><strong>12.40-13.10</strong><br>
-          Работа над произведением в классе альтового домриста (мк)<br>
-          Ю. Неверова (Москва)</p>
-        </div>
-        
-        <div style="margin-top: 15px;">
-          <p style="margin: 0 0 8px 0; font-weight: 600; color: #333;"><strong>13.10-13.30</strong><br>
-          Перерыв</p>
-        </div>
-        
-        <div style="margin-top: 15px;">
-          <p style="margin: 0 0 8px 0; font-weight: 600; color: #333;"><strong>13.30-14.00</strong><br>
-          К вопросу подготовки домриста-альтиста к конкурсу в области сольного и ансамблевого исполнительства (мк)<br>
-          Ф. Абсалямова (Казань)</p>
-        </div>
-        
-        <div style="margin-top: 15px;">
-          <p style="margin: 0 0 8px 0; font-weight: 600; color: #333;"><strong>14.00-14.30</strong><br>
-          Инновации в арсенале альтового домриста<br>
-          С. Боганов (Москва)</p>
-        </div>
-        
-        <div style="margin-top: 15px;">
-          <p style="margin: 0 0 8px 0; font-weight: 600; color: #333;"><strong>14.30-15.00</strong><br>
-          Несколько слов об искусстве исполнять музыку<br>
-          М. Горобцов (Москва)</p>
-        </div>
-        
-        <div style="margin-top: 15px;">
-          <p style="margin: 0 0 8px 0; font-weight: 600; color: #333;"><strong>15.00-16.00</strong><br>
-          Обед</p>
-        </div>
-      </div>
-
-      <div id="cultural-events" style="background: #f9f9f9; padding: 20px; border-radius: 10px; margin-bottom: 25px; scroll-margin-top: 120px;">
-        <h4 style="font-size: 20px; color: #333; margin: 0 0 10px 0; font-weight: 700;">ШЕРЕМЕТЕВСКИЙ ДВОРЕЦ</h4>
-        <p style="margin: 0 0 15px 0; color: #666; font-size: 15px;">набережная реки Фонтанки, 34</p>
-        
-        <div style="margin-top: 20px;">
-          <p style="margin: 0 0 8px 0; font-weight: 600; color: #333;"><strong>16.00-17.00</strong><br>
-          Встреча с мастерами - Зверев, Байдаков, Харечкин, Юниор-домры. Медиаторы, струны, подставки — влияние на звук.</p>
-        </div>
-        
-        <div style="margin-top: 20px;">
-          <p style="margin: 0 0 15px 0; font-weight: 700; color: #ff8c42; font-size: 18px;"><strong>17.00-19.00</strong><br>
-          Концерт «Мастера звука»</p>
+    <div class="program-day">
+      <h3 class="program-day-header active">1-й день 31.01.2026 (суббота)</h3>
+      <div class="program-day-content active">
+        <div id="educational-block" class="program-event-block">
+          <h4 class="program-venue-header">САНКТ-ПЕТЕРБУРГСКОЕ МУЗЫКАЛЬНОЕ УЧИЛИЩЕ ИМ. МУСОРГСКОГО</h4>
+          <p class="program-venue-address">ул. Моховая, 36<br>Большой зал</p>
           
-          <div style="margin-left: 20px; margin-top: 15px;">
-            <p style="margin: 0 0 10px 0; font-weight: 600; color: #333;">ПРОГРАММА КОНЦЕРТА</p>
-            <ol style="margin: 0; padding-left: 25px; line-height: 1.8;">
-              <li style="margin-bottom: 8px;">Ломова Екатерина - А. Пиоттух Монолог для альтовой домры</li>
-              <li style="margin-bottom: 8px;">Дуэт «Легкий звук» - Ломова Екатерина - Городная Любовь (домра малая) — Р. Фукс - Четыре дуэта<br>Л. Гурилев Русский танец</li>
-              <li style="margin-bottom: 8px;">Неверова Мария<br>Концертмейстер Лебединец Елизавета<br>Эрнст Блох. «Нигун» из цикла «Баал Шем»</li>
-              <li style="margin-bottom: 8px;">Князев Никита<br>Концертмейстер Курганова Анна<br>К.М. Вебер Адажио и рондо</li>
-              <li style="margin-bottom: 8px;">Статиенко Антон<br>Концертмейстер Курганова Анна<br>А. Петров Цыганская рапсодия</li>
-              <li style="margin-bottom: 8px;">Нота Людмила, Марышева Екатерина (домра малая)<br>Концертмейстер Сафина Лейла<br>Г. Свиридов. Скерцо из Трио</li>
-              <li style="margin-bottom: 8px;">Чурина Наталья, Семион Екатерина (арфа)<br>Маргарита Врубель. «Таинство» для домры и арфы</li>
-              <li style="margin-bottom: 8px;">Неверова Юлия<br>Концертмейстер Сафина Лейла<br>А. Бородин. Соната (I часть)</li>
-              <li style="margin-bottom: 8px;">Боганов Сергей<br>С. Боганов Каприсы из цикла «Медитации»</li>
-              <li style="margin-bottom: 8px;">Чурина Наталья<br>Концертмейстер Рулева Ольга<br>С. Цинцадзе "Грузинские напевы"<br>А. Танонов. «Петербургский грув» из цикла «Танончики»</li>
-              <li style="margin-bottom: 8px;">Все солисты - И. Альбенис Астурия</li>
-            </ol>
+          <div class="program-time-block">
+            <p class="program-time-text"><strong>12.00-12.10</strong><br>
+            Открытие фестиваля. Вступительное слово<br>
+            Наталья Чурина, художественный руководитель фестиваля<br>
+            Наталья Шкребко, профессор, Заслуженная артистка РФ<br>
+            Михаил Горобцов, профессор, Народный артист РФ</p>
+          </div>
+          
+          <div class="program-time-block-small">
+            <p class="program-time-text"><strong>12.10-12.40</strong><br>
+            Постановка игрового аппарата на альтовой домре (мк)<br>
+            Н. Чурина (Санкт-Петербург)</p>
+          </div>
+          
+          <div class="program-time-block-small">
+            <p class="program-time-text"><strong>12.40-13.10</strong><br>
+            Работа над произведением в классе альтового домриста (мк)<br>
+            Ю. Неверова (Москва)</p>
+          </div>
+          
+          <div class="program-time-block-small">
+            <p class="program-time-text"><strong>13.10-13.30</strong><br>
+            Перерыв</p>
+          </div>
+          
+          <div class="program-time-block-small">
+            <p class="program-time-text"><strong>13.30-14.00</strong><br>
+            К вопросу подготовки домриста-альтиста к конкурсу в области сольного и ансамблевого исполнительства (мк)<br>
+            Ф. Абсалямова (Казань)</p>
+          </div>
+          
+          <div class="program-time-block-small">
+            <p class="program-time-text"><strong>14.00-14.30</strong><br>
+            Инновации в арсенале альтового домриста<br>
+            С. Боганов (Москва)</p>
+          </div>
+          
+          <div class="program-time-block-small">
+            <p class="program-time-text"><strong>14.30-15.00</strong><br>
+            Несколько слов об искусстве исполнять музыку<br>
+            М. Горобцов (Москва)</p>
+          </div>
+          
+          <div class="program-time-block-small">
+            <p class="program-time-text"><strong>15.00-16.00</strong><br>
+            Обед</p>
+          </div>
+        </div>
+
+        <div id="cultural-events" class="program-event-block">
+          <h4 class="program-venue-header">ШЕРЕМЕТЕВСКИЙ ДВОРЕЦ</h4>
+          <p class="program-venue-address">набережная реки Фонтанки, 34</p>
+          
+          <div class="program-time-block">
+            <p class="program-time-text"><strong>16.00-17.00</strong><br>
+            Встреча с мастерами - Зверев, Байдаков, Харечкин, Юниор-домры. Медиаторы, струны, подставки — влияние на звук.</p>
+          </div>
+          
+          <div class="program-time-block">
+            <p class="program-concert-title"><strong>17.00-19.00</strong><br>
+            Концерт «Мастера звука»</p>
+            
+            <div class="program-concert-list">
+              <button type="button" class="program-concert-list-title active">ПРОГРАММА КОНЦЕРТА</button>
+              <div class="program-concert-list-content active">
+                <ol>
+                  <li>Ломова Екатерина - А. Пиоттух Монолог для альтовой домры</li>
+                  <li>Дуэт «Легкий звук» - Ломова Екатерина - Городная Любовь (домра малая) — Р. Фукс - Четыре дуэта<br>Л. Гурилев Русский танец</li>
+                  <li>Неверова Мария<br>Концертмейстер Лебединец Елизавета<br>Эрнст Блох. «Нигун» из цикла «Баал Шем»</li>
+                  <li>Князев Никита<br>Концертмейстер Курганова Анна<br>К.М. Вебер Адажио и рондо</li>
+                  <li>Статиенко Антон<br>Концертмейстер Курганова Анна<br>А. Петров Цыганская рапсодия</li>
+                  <li>Нота Людмила, Марышева Екатерина (домра малая)<br>Концертмейстер Сафина Лейла<br>Г. Свиридов. Скерцо из Трио</li>
+                  <li>Чурина Наталья, Семион Екатерина (арфа)<br>Маргарита Врубель. «Таинство» для домры и арфы</li>
+                  <li>Неверова Юлия<br>Концертмейстер Сафина Лейла<br>А. Бородин. Соната (I часть)</li>
+                  <li>Боганов Сергей<br>С. Боганов Каприсы из цикла «Медитации»</li>
+                  <li>Чурина Наталья<br>Концертмейстер Рулева Ольга<br>С. Цинцадзе "Грузинские напевы"<br>А. Танонов. «Петербургский грув» из цикла «Танончики»</li>
+                  <li>Все солисты - И. Альбенис Астурия</li>
+                </ol>
+              </div>
+            </div>
+            <a href="https://tickets.theatremuseum.ru/event/435DA21541E3D2CEFFBA819B54E588A2A0A8C45B" target="_blank" rel="noopener noreferrer" class="program-ticket-link">Купить билеты</a>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Day 2 -->
-    <div style="margin-bottom: 50px;">
-      <h3 style="font-size: 26px; color: #333; margin: 30px 0 20px 0; font-weight: 700; border-bottom: 2px solid #ff8c42; padding-bottom: 10px;">2-й день 1.02.2026 (воскресенье)</h3>
-      
-      <div id="competition-program" style="background: #f9f9f9; padding: 20px; border-radius: 10px; margin-bottom: 25px; scroll-margin-top: 120px;">
-        <h4 style="font-size: 20px; color: #333; margin: 0 0 10px 0; font-weight: 700;">ШЕРЕМЕТЕВСКИЙ ДВОРЕЦ</h4>
-        <p style="margin: 0 0 15px 0; color: #666; font-size: 15px;">набережная реки Фонтанки, 34</p>
-        
-        <div style="margin-top: 20px;">
-          <p style="margin: 0 0 15px 0; font-weight: 700; color: #ff8c42; font-size: 18px;"><strong>12.00-13.30</strong><br>
-          Концерт «Путь к мастерству»</p>
+    <div class="program-day">
+      <h3 class="program-day-header">2-й день 1.02.2026 (воскресенье)</h3>
+      <div class="program-day-content">
+        <div id="competition-program" class="program-event-block">
+          <h4 class="program-venue-header">ШЕРЕМЕТЕВСКИЙ ДВОРЕЦ</h4>
+          <p class="program-venue-address">набережная реки Фонтанки, 34</p>
           
-          <div style="margin-left: 20px; margin-top: 15px;">
-            <p style="margin: 0 0 10px 0; font-weight: 600; color: #333;">ПРОГРАММА КОНЦЕРТА</p>
-            <ol style="margin: 0; padding-left: 25px; line-height: 1.8;">
-              <li style="margin-bottom: 12px;">Пьянкова София (17 лет)<br>СПбМУ им. М. П. Мусоргского<br>Преподаватель Чурина Наталья Александровна<br>И. С. Бах — Прелюдия из Сюиты для виолончели соло №1</li>
-              <li style="margin-bottom: 12px;">Самусева Мария (15 лет)<br>Охтинский центр эстетического воспитания<br>Преподаватель Иванова Елена Камильевна<br>Д. Скарлатти — Соната g-moll<br>Концертмейстер Калиничева Татьяна Олеговна</li>
-              <li style="margin-bottom: 12px;">Петренко Александра<br>РГПУ им. А. И. Герцена (1 курс магистратуры)<br>Преподаватель Чувашева Анна Юрьевна<br>Г. Ф. Гендель — Соната №3<br>Концертмейстер Козяр Татьяна Алексеевна<br>4 мин. 30 сек.</li>
-              <li style="margin-bottom: 12px;">Филиппова Беата (14 лет)<br>Музыкальный лицей<br>Преподаватель Саяпина Екатерина Витальевна<br>Д. Валентини — Престо<br>Концертмейстер Костенко Александра<br>6 мин.</li>
-              <li style="margin-bottom: 12px;">Зуева Кристина (15 лет)<br>Московская ДМШ им. Б. А. Чайковского<br>Преподаватель: Дубровина Наталья Александровна<br>Н. Паганини — Рондо из Сонаты №1 A-dur<br>Румынский народный танец «Жаворонок» в обработке М. Гнутова<br>Концертмейстер Сафина Лейла</li>
-              <li style="margin-bottom: 12px;">Сецен Полина (19 лет)<br>СПбМУ им. М. П. Мусоргского<br>Преподаватель Чурина Наталья Александровна<br>Д. Поппер — Тарантелла для виолончели и фортепиано<br>Концертмейстер Мусаэлов Артем Рафаэльевич</li>
-              <li style="margin-bottom: 12px;">Соловьева Василиса (15 лет)<br>Кингисеппская детская школа искусств<br>Преподаватель Алексеева Кристина Валерьевна<br>А. Шалов (обр.) — Русская народная песня «Не корите меня, не браните»<br>Концертмейстер:</li>
-              <li style="margin-bottom: 12px;">Худякова Варвара (14 лет)<br>Санкт-Петербургская детская школа искусств имени С.С. Прокофьева<br>Преподаватель Сучкова Анастасия Александровна<br>А. Рождествин — Фанданго<br>Концертмейстер Шуклина Елена Евгеньевна</li>
-              <li style="margin-bottom: 12px;">Жмуд Ксения (16 лет)<br>СПбМУ им. М. П. Мусоргского<br>Преподаватель Чурина Наталья Александровна<br>А. Шалов — Обработка русской народной песни «Тонкая рябина»<br>Концертмейстер Мусаэлов Артем Рафаэльевич</li>
-              <li style="margin-bottom: 12px;">Рогожникова Екатерина (16 лет)<br>ДМШ №17 им. А. Г. Рубинштейна<br>Преподаватель Фоминских Юлия<br>Я. Сибелиус — Грустный вальс<br>Г. Кассадо — Танец зелёного дьявола<br>Концертмейстер: Ковалева Елена Леонидовна</li>
-              <li style="margin-bottom: 12px;">Сысоева Лидия (15 лет)<br>Преподаватель Гуничева Ольга Ивановна<br>Лицей искусств «Санкт-Петербург»<br>Ф. Крейслер — Прелюдия и аллегро в стиле Пуньяни<br>Концертмейстер Щербинина Татьяна Александровна</li>
-              <li style="margin-bottom: 12px;">Чурина Наталья, Рулева Ольга (фортепиано)<br>Премьера И. Миняков — Обработка старинного романса Н. Харито «Хризантемы»</li>
-            </ol>
+          <div class="program-time-block">
+            <p class="program-concert-title"><strong>12.00-13.30</strong><br>
+            Концерт «Путь к мастерству»</p>
+            
+            <div class="program-concert-list">
+              <button type="button" class="program-concert-list-title active">ПРОГРАММА КОНЦЕРТА</button>
+              <div class="program-concert-list-content active">
+                <ol>
+                  <li class="large-spacing">Пьянкова София (17 лет)<br>СПбМУ им. М. П. Мусоргского<br>Преподаватель Чурина Наталья Александровна<br>И. С. Бах — Прелюдия из Сюиты для виолончели соло №1</li>
+                  <li class="large-spacing">Самусева Мария (15 лет)<br>Охтинский центр эстетического воспитания<br>Преподаватель Иванова Елена Камильевна<br>Д. Скарлатти — Соната g-moll<br>Концертмейстер Калиничева Татьяна Олеговна</li>
+                  <li class="large-spacing">Петренко Александра<br>РГПУ им. А. И. Герцена (1 курс магистратуры)<br>Преподаватель Чувашева Анна Юрьевна<br>Г. Ф. Гендель — Соната №3<br>Концертмейстер Козяр Татьяна Алексеевна<br>4 мин. 30 сек.</li>
+                  <li class="large-spacing">Филиппова Беата (14 лет)<br>Музыкальный лицей<br>Преподаватель Саяпина Екатерина Витальевна<br>Д. Валентини — Престо<br>Концертмейстер Костенко Александра<br>6 мин.</li>
+                  <li class="large-spacing">Зуева Кристина (15 лет)<br>Московская ДМШ им. Б. А. Чайковского<br>Преподаватель: Дубровина Наталья Александровна<br>Н. Паганини — Рондо из Сонаты №1 A-dur<br>Румынский народный танец «Жаворонок» в обработке М. Гнутова<br>Концертмейстер Сафина Лейла</li>
+                  <li class="large-spacing">Сецен Полина (19 лет)<br>СПбМУ им. М. П. Мусоргского<br>Преподаватель Чурина Наталья Александровна<br>Д. Поппер — Тарантелла для виолончели и фортепиано<br>Концертмейстер Мусаэлов Артем Рафаэльевич</li>
+                  <li class="large-spacing">Соловьева Василиса (15 лет)<br>Кингисеппская детская школа искусств<br>Преподаватель Алексеева Кристина Валерьевна<br>А. Шалов (обр.) — Русская народная песня «Не корите меня, не браните»<br>Концертмейстер:</li>
+                  <li class="large-spacing">Худякова Варвара (14 лет)<br>Санкт-Петербургская детская школа искусств имени С.С. Прокофьева<br>Преподаватель Сучкова Анастасия Александровна<br>А. Рождествин — Фанданго<br>Концертмейстер Шуклина Елена Евгеньевна</li>
+                  <li class="large-spacing">Жмуд Ксения (16 лет)<br>СПбМУ им. М. П. Мусоргского<br>Преподаватель Чурина Наталья Александровна<br>А. Шалов — Обработка русской народной песни «Тонкая рябина»<br>Концертмейстер Мусаэлов Артем Рафаэльевич</li>
+                  <li class="large-spacing">Рогожникова Екатерина (16 лет)<br>ДМШ №17 им. А. Г. Рубинштейна<br>Преподаватель Фоминских Юлия<br>Я. Сибелиус — Грустный вальс<br>Г. Кассадо — Танец зелёного дьявола<br>Концертмейстер: Ковалева Елена Леонидовна</li>
+                  <li class="large-spacing">Сысоева Лидия (15 лет)<br>Преподаватель Гуничева Ольга Ивановна<br>Лицей искусств «Санкт-Петербург»<br>Ф. Крейслер — Прелюдия и аллегро в стиле Пуньяни<br>Концертмейстер Щербинина Татьяна Александровна</li>
+                  <li class="large-spacing">Чурина Наталья, Рулева Ольга (фортепиано)<br>Премьера И. Миняков — Обработка старинного романса Н. Харито «Хризантемы»</li>
+                </ol>
+              </div>
+            </div>
+            <a href="https://tickets.theatremuseum.ru/event/8209C86E8020D109B67A77E1DB0C8644CD304282" target="_blank" rel="noopener noreferrer" class="program-ticket-link">Купить билеты</a>
           </div>
-        </div>
-        
-        <div style="margin-top: 20px;">
-          <p style="margin: 0 0 8px 0; font-weight: 600; color: #333;"><strong>13.30-14.00</strong><br>
-          Презентация сборников для альтовой домры</p>
+          
+          <div class="program-time-block">
+            <p class="program-time-text"><strong>13.30-14.00</strong><br>
+            Презентация сборников для альтовой домры</p>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Day 3 -->
-    <div style="margin-bottom: 50px;">
-      <h3 style="font-size: 26px; color: #333; margin: 30px 0 20px 0; font-weight: 700; border-bottom: 2px solid #ff8c42; padding-bottom: 10px;">3-й день 2.02.2026 (понедельник)</h3>
-      
-      <div style="background: #f9f9f9; padding: 20px; border-radius: 10px; margin-bottom: 25px;">
-        <h4 style="font-size: 20px; color: #333; margin: 0 0 10px 0; font-weight: 700;">ДОМ УЧЕНЫХ ИМ. М. Горького</h4>
-        <p style="margin: 0 0 15px 0; color: #666; font-size: 15px;">Дворцовая набережная, 26</p>
-        
-        <div style="margin-top: 20px;">
-          <p style="margin: 0 0 15px 0; font-weight: 700; color: #ff8c42; font-size: 18px;"><strong>19.00 — 20.30</strong><br>
-          Закрытие фестиваля. Концерт «Альтовая домра+»</p>
+    <div class="program-day">
+      <h3 class="program-day-header">3-й день 2.02.2026 (понедельник)</h3>
+      <div class="program-day-content">
+        <div class="program-event-block">
+          <h4 class="program-venue-header">ДОМ УЧЕНЫХ ИМ. М. Горького</h4>
+          <p class="program-venue-address">Дворцовая набережная, 26</p>
           
-          <div style="margin-left: 20px; margin-top: 15px;">
-            <p style="margin: 0 0 10px 0; font-weight: 600; color: #333;">ПРОГРАММА КОНЦЕРТА</p>
-            <ol style="margin: 0; padding-left: 25px; line-height: 1.8;">
-              <li style="margin-bottom: 8px;">В. Насонов Фантазия на тему русской песни «Винный мой колодезь»</li>
-              <li style="margin-bottom: 8px;">М. Карл Вальс<br>Дуэт «Легкий звук» - Любовь Городная (домра малая) и Екатерина Ломова</li>
-              <li style="margin-bottom: 8px;">В. Бояшов «Монолог» для альтовой домры и фортепиано<br>Морозова Александра, Лебединец Елизавета (фортепиано)</li>
-              <li style="margin-bottom: 8px;">Евдокия Сандлер. Сюита для домры-альт и фортепиано «Меланхолия»<br>Самохин Владимир, Сандлер Нина (фортепиано)</li>
-              <li style="margin-bottom: 8px;">С. Цинцадзе Лале</li>
-              <li style="margin-bottom: 8px;">С. Цинцадзе Сачидао<br>Группа альтовых домр Андреевского оркестра<br>Камерный состав Андреевского оркестра, дирижер В. Фонин</li>
-              <li style="margin-bottom: 8px;">Е. Дербенко Концерт для альтовой домры с оркестром №2, 2 часть c каденцией Ф. Абсалямовой<br>солистка Абсалямова Фарида</li>
-              <li style="margin-bottom: 8px;">А. Эшпай Венгерские напевы<br>солистка Чурина Наталья</li>
-              <li style="margin-bottom: 8px;">А. Шалов Сыпь, Семен<br>солистка Дубровина Наталья</li>
-              <li style="margin-bottom: 8px;">А. Цыганков - В. Дитель Коробейники<br>солист Карпунькин Ярослав</li>
-              <li style="margin-bottom: 8px;">Н. Римский-Корсаков Пляска Скоморохов из оперы «Снегурочка»<br>солисты Абсалямова Фарида и Карпунькин Ярослав</li>
-              <li style="margin-bottom: 8px;">М. Броннер Романсы<br>солист Горобцов Михаил</li>
-              <li style="margin-bottom: 8px;">С. Боганов Мой каприс<br>солисты Боганов Сергей, Нефедов Георгий (балалайка), Телегин Василий (бас-гитара)</li>
-              <li style="margin-bottom: 8px;">А. Цыганков - С. Ирадье «Голубка»<br>солисты — альтовые домристы</li>
-            </ol>
+          <div class="program-time-block">
+            <p class="program-concert-title"><strong>19.00 — 20.30</strong><br>
+            Закрытие фестиваля. Концерт «Альтовая домра+»</p>
+            
+            <div class="program-concert-list">
+              <button type="button" class="program-concert-list-title active">ПРОГРАММА КОНЦЕРТА</button>
+              <div class="program-concert-list-content active">
+                <ol>
+                  <li>В. Насонов Фантазия на тему русской песни «Винный мой колодезь»</li>
+                  <li>М. Карл Вальс<br>Дуэт «Легкий звук» - Любовь Городная (домра малая) и Екатерина Ломова</li>
+                  <li>В. Бояшов «Монолог» для альтовой домры и фортепиано<br>Морозова Александра, Лебединец Елизавета (фортепиано)</li>
+                  <li>Евдокия Сандлер. Сюита для домры-альт и фортепиано «Меланхолия»<br>Самохин Владимир, Сандлер Нина (фортепиано)</li>
+                  <li>С. Цинцадзе Лале</li>
+                  <li>С. Цинцадзе Сачидао<br>Группа альтовых домр Андреевского оркестра<br>Камерный состав Андреевского оркестра, дирижер В. Фонин</li>
+                  <li>Е. Дербенко Концерт для альтовой домры с оркестром №2, 2 часть c каденцией Ф. Абсалямовой<br>солистка Абсалямова Фарида</li>
+                  <li>А. Эшпай Венгерские напевы<br>солистка Чурина Наталья</li>
+                  <li>А. Шалов Сыпь, Семен<br>солистка Дубровина Наталья</li>
+                  <li>А. Цыганков - В. Дитель Коробейники<br>солист Карпунькин Ярослав</li>
+                  <li>Н. Римский-Корсаков Пляска Скоморохов из оперы «Снегурочка»<br>солисты Абсалямова Фарида и Карпунькин Ярослав</li>
+                  <li>М. Броннер Романсы<br>солист Горобцов Михаил</li>
+                  <li>С. Боганов Мой каприс<br>солисты Боганов Сергей, Нефедов Георгий (балалайка), Телегин Василий (бас-гитара)</li>
+                  <li>А. Цыганков - С. Ирадье «Голубка»<br>солисты — альтовые домристы</li>
+                </ol>
+              </div>
+            </div>
+            <span class="program-free-label">Вход свободный</span>
           </div>
         </div>
       </div>
@@ -1210,6 +1444,52 @@
       });
     }, { threshold: 0.35 });
     sections.forEach(s => navObserver.observe(s));
+
+    // Program accordion functionality
+    const programDayHeaders = document.querySelectorAll('.program-day-header');
+    programDayHeaders.forEach(header => {
+      header.addEventListener('click', function() {
+        const day = this.parentElement;
+        const content = day.querySelector('.program-day-content');
+        const isActive = this.classList.contains('active');
+        
+        // Close all other days
+        programDayHeaders.forEach(h => {
+          if (h !== this) {
+            h.classList.remove('active');
+            h.parentElement.querySelector('.program-day-content').classList.remove('active');
+          }
+        });
+        
+        // Toggle current day
+        if (isActive) {
+          this.classList.remove('active');
+          content.classList.remove('active');
+        } else {
+          this.classList.add('active');
+          content.classList.add('active');
+        }
+      });
+    });
+
+    // Concert program list toggle functionality
+    const concertListTitles = document.querySelectorAll('.program-concert-list-title');
+    concertListTitles.forEach(button => {
+      button.addEventListener('click', function() {
+        const listContainer = this.parentElement;
+        const content = listContainer.querySelector('.program-concert-list-content');
+        const isActive = this.classList.contains('active');
+        
+        // Toggle active state
+        if (isActive) {
+          this.classList.remove('active');
+          content.classList.remove('active');
+        } else {
+          this.classList.add('active');
+          content.classList.add('active');
+        }
+      });
+    });
   </script>
 
 </body>
