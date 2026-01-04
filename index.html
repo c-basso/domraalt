@@ -37,7 +37,7 @@
       z-index: 99999;
       /* ensure topnav is above transformed/stacked sections */
       pointer-events: none;
-      background: #fefefe;
+      background: #EEE0C5;
       border-radius: 0;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     }
@@ -56,6 +56,8 @@
       transform: translateZ(0);
     }
 
+    /* Old logo styles - commented out */
+    /*
     .logo {
       display: inline-flex;
       align-items: center;
@@ -69,11 +71,11 @@
     }
 
     .logo-img {
-      /* width: 56px; */
+      width: 56px;
       height: 56px;
       object-fit: contain;
       border-radius: 8px;
-      /* background: rgba(0, 0, 0, 0.04); */
+      background: rgba(0, 0, 0, 0.04);
       padding: 4px;
       display: inline-block;
     }
@@ -106,6 +108,22 @@
       font-size: 16px;
       margin-left: 24px;
       letter-spacing: 3px;
+    }
+    */
+
+    /* New logo styles */
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      height: 68px;
+    }
+
+    .logo img {
+      height: 50px;
+      width: auto;
+      object-fit: contain;
+      display: block;
     }
 
     .nav-links {
@@ -512,6 +530,8 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
+      /* Old logo responsive styles - commented out */
+      /*
       .logo-domra {
         height: 80px;
         transform: translateX(8px) rotate(28deg);
@@ -524,6 +544,12 @@
       .logo-pro-solo {
         font-size: 14px;
         margin-left: 16px;
+      }
+      */
+
+      /* New logo responsive styles */
+      .logo img {
+        height: 60px;
       }
     }
 
@@ -546,9 +572,10 @@
 
       .logo {
         height: auto;
-        gap: 8px;
       }
 
+      /* Old logo mobile styles - commented out */
+      /*
       .logo-domra {
         height: 50px;
         transform: translateX(5px) rotate(25deg);
@@ -561,6 +588,12 @@
 
       .logo-pro-solo {
         display: none;
+      }
+      */
+
+      /* New logo mobile styles */
+      .logo img {
+        height: 50px;
       }
 
       .nav-links {
@@ -946,6 +979,8 @@
         justify-content: center; /* Center logo on small mobile */
       }
 
+      /* Old logo small mobile styles - commented out */
+      /*
       .logo-domra {
         height: 40px;
         transform: translateX(3px) rotate(20deg);
@@ -953,6 +988,12 @@
 
       .logo-text {
         font-size: 14px;
+      }
+      */
+
+      /* New logo small mobile styles */
+      .logo img {
+        height: 40px;
       }
 
       header {
@@ -1046,6 +1087,8 @@
   <header>
     <div class="topnav" aria-hidden="false">
       <div class="nav-inner">
+        <!-- Old logo HTML - commented out -->
+        <!--
         <a class="logo" href="#">
           <img src="img/domra.svg" alt="Домра" class="logo-domra" />
           <span class="logo-text">
@@ -1053,6 +1096,11 @@
             <span>домра</span>
           </span>
           <span class="logo-pro-solo">PRO SOLO</span>
+        </a>
+        -->
+        <!-- New logo HTML -->
+        <a class="logo" href="#">
+          <img src="img/new_logo.jpeg" alt="Логотип фестиваля" />
         </a>
         <nav class="nav-links" aria-label="Главная навигация">
           <a href="#about">О фестивале</a>
@@ -1078,9 +1126,13 @@
   <section id="about">
     <h2>О фестивале</h2>
     <p>
-      Первый всероссийский фестиваль альтовой домры «Альтовая домра: Pro Solo» — это платформа для развития творчества,
-      обмена опытом и поддержки талантов. Фестиваль объединяет представителей
-      музыкального искусства, образования и творческих индустрий.
+      Первый Всероссийский фестиваль «Альтовая домра: Pro Solo» пройдет в Санкт-Петербурге с 31 января по 2 февраля 2026 года и посвящен 130-летию альтовой домры. В 1896 году мастер Семен Налимов изготовил альтовую домру вслед за малой домрой, тем самым расширив и обогатив Андреевский оркестр.
+    </p>
+    <p>
+      В наше время происходит колоссальное развитие национальных инструментов. При этом альтовая домра остается на периферии, несмотря на выразительный «тембр человеческого голоса», технические возможности, не уступающие другим инструментам, а также наличие специалистов, учащихся на всех трех уровнях — ДМШ, ССУЗ, ВУЗ.
+    </p>
+    <p>
+      Миссией первого фестиваля видится увеличение интереса к русской музыкальной культуре, обращение внимания музыкантов, композиторов, слушателей на возможности инструмента, создание и укрепление связей между городами, формирование прочных контактов между учащимися ДМШ, студентами, преподавателями и концертирующими исполнителями и продвижение альтовой домры.
     </p>
   </section>
 
@@ -1453,35 +1505,66 @@
 
     // Program accordion functionality
     const programDayHeaders = document.querySelectorAll('.program-day-header');
+    let isAccordionAnimating = false;
+    
     programDayHeaders.forEach(header => {
       header.addEventListener('click', function(e) {
         e.preventDefault();
-        const scrollY = window.scrollY;
+        e.stopPropagation();
+        
+        if (isAccordionAnimating) return;
+        
         const day = this.parentElement;
         const content = day.querySelector('.program-day-content');
         const isActive = this.classList.contains('active');
         
-        // Close all other days
-        programDayHeaders.forEach(h => {
-          if (h !== this) {
-            h.classList.remove('active');
-            h.parentElement.querySelector('.program-day-content').classList.remove('active');
-          }
-        });
-        
-        // Toggle current day
+        // If closing, scroll first, then close
         if (isActive) {
-          this.classList.remove('active');
-          content.classList.remove('active');
-        } else {
-          this.classList.add('active');
-          content.classList.add('active');
+          const offset = 96; // Height of fixed navigation
+          const headerRect = this.getBoundingClientRect();
+          const currentScrollY = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
+          const targetScrollY = headerRect.top + currentScrollY - offset;
+          
+          // Scroll to header first
+          window.scrollTo({
+            top: Math.max(0, targetScrollY),
+            behavior: 'smooth'
+          });
+          
+          // Then remove active class after scroll animation starts
+          setTimeout(() => {
+            this.classList.remove('active');
+            content.classList.remove('active');
+          }, 100);
+          return;
         }
         
-        // Restore scroll position to prevent unwanted scrolling
-        requestAnimationFrame(() => {
-          window.scrollTo(0, scrollY);
-        });
+        isAccordionAnimating = true;
+        
+        // Open current day (don't close other days - allow multiple to be open)
+        this.classList.add('active');
+        content.classList.add('active');
+        
+        // Scroll to header after a timeout to let accordion start expanding
+        const headerElement = this;
+        setTimeout(() => {
+          requestAnimationFrame(() => {
+            const offset = 96; // Height of fixed navigation
+            const headerRect = headerElement.getBoundingClientRect();
+            const currentScrollY = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
+            const targetScrollY = headerRect.top + currentScrollY - offset;
+            
+            // Use scrollTo with smooth behavior
+            window.scrollTo({
+              top: Math.max(0, targetScrollY),
+              behavior: 'smooth'
+            });
+            
+            setTimeout(() => {
+              isAccordionAnimating = false;
+            }, 600);
+          });
+        }, 300);
       });
     });
 
@@ -1497,17 +1580,24 @@
         
         // Toggle active state
         if (isActive) {
-          this.classList.remove('active');
-          content.classList.remove('active');
+          // First restore scroll position, then remove active class
+          requestAnimationFrame(() => {
+            window.scrollTo(0, scrollY);
+            // Remove active class after scroll starts
+            setTimeout(() => {
+              this.classList.remove('active');
+              content.classList.remove('active');
+            }, 50);
+          });
         } else {
           this.classList.add('active');
           content.classList.add('active');
+          
+          // Restore scroll position to prevent unwanted scrolling
+          requestAnimationFrame(() => {
+            window.scrollTo(0, scrollY);
+          });
         }
-        
-        // Restore scroll position to prevent unwanted scrolling
-        requestAnimationFrame(() => {
-          window.scrollTo(0, scrollY);
-        });
       });
     });
   </script>
