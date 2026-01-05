@@ -254,6 +254,16 @@
       text-align: center;
     }
 
+    .section-banner {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto 24px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
     /* Add hidden spacer so headings don't get covered by fixed nav while scrolling */
     section::before {
       content: "";
@@ -723,6 +733,11 @@
         scroll-margin-top: 90px;
       }
 
+      .section-banner {
+        border-radius: 14px;
+        margin-bottom: 28px;
+      }
+
       section::before {
         height: 90px;
         margin-top: -90px;
@@ -916,6 +931,11 @@
         margin: 0 0 20px 0;
         padding-bottom: 14px;
         scroll-margin-top: 96px;
+      }
+
+      .section-banner {
+        border-radius: 16px;
+        margin-bottom: 32px;
       }
 
       section::before {
@@ -1324,6 +1344,8 @@
 
   <!-- About -->
   <section id="about">
+    
+    <img src="img/banner.jpeg" alt="Баннер фестиваля" class="section-banner" />
     <h2>О фестивале</h2>
     <p>
       <span style="color: #ce3022; font-weight: 600;">Первый Всероссийский фестиваль «Альтовая домра: Pro Solo»</span> пройдет в Санкт-Петербурге с 31 января по 2 февраля 2026 года и посвящен 130-летию альтовой домры. В 1896 году мастер Семен Налимов изготовил альтовую домру вслед за малой домрой, тем самым расширив и обогатив Андреевский оркестр.
