@@ -32,6 +32,17 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    /* Text selection styles */
+    ::selection {
+      background-color: #ce3022;
+      color: #fff;
+    }
+
+    ::-moz-selection {
+      background-color: #ce3022;
+      color: #fff;
+    }
+
     /* Top navigation (sticky) */
     .topnav {
       position: fixed;
@@ -141,13 +152,13 @@
     /* Nav links - hidden on mobile, shown on tablet+ */
 
     .nav-links a {
-      color: #333;
+      color: #e28c16;
       text-decoration: none;
       padding: 12px 16px;
       border-radius: 10px;
-      transition: background 0.18s ease, transform 0.18s ease;
+      transition: background 0.18s ease, transform 0.18s ease, color 0.18s ease;
       font-weight: 600;
-      font-size: 16px;
+      font-size: 20px;
       min-height: 44px;
       display: flex;
       align-items: center;
@@ -158,6 +169,11 @@
     .nav-links a:hover {
       background: rgba(0, 0, 0, 0.08);
       transform: translateY(-1px);
+    }
+
+    .nav-links a:active,
+    .nav-links a.active {
+      color: #ce3022;
     }
 
     header {
@@ -228,13 +244,14 @@
     section h2 {
       font-size: 24px;
       margin: 0 0 16px 0;
-      color: #333;
+      color: #ce3022;
       font-weight: 700;
       padding-bottom: 12px;
       scroll-margin-top: 80px;
       letter-spacing: -0.2px;
       line-height: 1.3;
       text-rendering: optimizeLegibility;
+      text-align: center;
     }
 
     /* Add hidden spacer so headings don't get covered by fixed nav while scrolling */
@@ -1308,7 +1325,7 @@
   <section id="about">
     <h2>О фестивале</h2>
     <p>
-      Первый Всероссийский фестиваль «Альтовая домра: Pro Solo» пройдет в Санкт-Петербурге с 31 января по 2 февраля 2026 года и посвящен 130-летию альтовой домры. В 1896 году мастер Семен Налимов изготовил альтовую домру вслед за малой домрой, тем самым расширив и обогатив Андреевский оркестр.
+      <span style="color: #ce3022; font-weight: 600;">Первый Всероссийский фестиваль «Альтовая домра: Pro Solo»</span> пройдет в Санкт-Петербурге с 31 января по 2 февраля 2026 года и посвящен 130-летию альтовой домры. В 1896 году мастер Семен Налимов изготовил альтовую домру вслед за малой домрой, тем самым расширив и обогатив Андреевский оркестр.
     </p>
     <p>
       В наше время происходит колоссальное развитие национальных инструментов. При этом альтовая домра остается на периферии, несмотря на выразительный «тембр человеческого голоса», технические возможности, не уступающие другим инструментам, а также наличие специалистов, учащихся на всех трех уровнях — ДМШ, ССУЗ, ВУЗ.
@@ -1382,11 +1399,6 @@
             <p class="program-time-text"><strong>14.30-15.00</strong><br>
             <strong>Несколько слов об искусстве исполнять музыку</strong><br>
             М. Горобцов (Москва)</p>
-          </div>
-          
-          <div class="program-time-block-small">
-            <p class="program-time-text"><strong>15.00-16.00</strong><br>
-            <strong>Обед</strong></p>
           </div>
         </div>
 
@@ -1693,8 +1705,8 @@
         if (!id) return;
         const link = document.querySelector('.nav-links a[href="#' + id + '"]');
         if (entry.isIntersecting) {
-          navLinks.forEach(l => l.style.opacity = '0.6');
-          if (link) link.style.opacity = '1';
+          navLinks.forEach(l => l.classList.remove('active'));
+          if (link) link.classList.add('active');
         }
       });
     }, { threshold: 0.35 });
