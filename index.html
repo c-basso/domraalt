@@ -1161,6 +1161,21 @@
       transform: rotate(180deg);
     }
 
+    /* Non-clickable version without arrow */
+    p.program-concert-list-title {
+      cursor: default;
+      pointer-events: none;
+    }
+
+    p.program-concert-list-title::after {
+      display: none;
+    }
+
+    p.program-concert-list-title:hover {
+      background: transparent;
+      border-color: transparent;
+    }
+
     .program-concert-list-content {
       max-height: 0;
       overflow: hidden;
@@ -1197,7 +1212,7 @@
       display: inline-block;
       margin-top: 12px;
       padding: 10px 24px;
-      background: #ce3022;
+      background: #e28c16;
       color: #fff;
       font-weight: 600;
       text-decoration: none;
@@ -1433,11 +1448,11 @@
 
         <div id="cultural-events" class="program-event-block">
           <h4 class="program-venue-header">ШЕРЕМЕТЕВСКИЙ ДВОРЕЦ</h4>
-          <p class="program-venue-address">набережная реки Фонтанки, 34</p>
+          <p class="program-venue-address">набережная реки Фонтанки, 34. БЕЛЫЙ ЗАЛ</p>
           
           <!-- begin of 16.00-17.00 Встреча с мастерами музыкальных инструментов -->
           <div class="program-concert-list">
-            <button type="button" class="program-concert-list-title">16.00-17.00 ВСТРЕЧА С МАСТЕРАМИ МУЗЫКАЛЬНЫХ ИНСТРУМЕНТОВ</button>
+            <button type="button" class="program-concert-list-title program-concert-title"><strong>16.00-17.00</strong> ВСТРЕЧА С МАСТЕРАМИ МУЗЫКАЛЬНЫХ ИНСТРУМЕНТОВ</button>
             <div class="program-concert-list-content">
               <div class="program-time-block">
                 <p class="program-time-text">
@@ -1481,7 +1496,7 @@
       <div class="program-day-content">
         <div id="competition-program" class="program-event-block">
           <h4 class="program-venue-header">ШЕРЕМЕТЕВСКИЙ ДВОРЕЦ</h4>
-          <p class="program-venue-address">набережная реки Фонтанки, 34</p>
+          <p class="program-venue-address">набережная реки Фонтанки, 34. ЗАЛ ДОМОВОЙ ЦЕРКВИ</p>
           
           <div class="program-time-block">
             <div class="program-concert-list">
@@ -1509,7 +1524,7 @@
           
           <div class="program-time-block">
             <!-- begin Презентация сборников title -->
-            <p class="program-time-text"><strong>13.30-14.00</strong> <strong>Презентация сборников для альтовой домры</strong></p>
+            <p class="program-concert-list-title program-concert-title"><strong>13.30-14.00</strong> ПРЕЗЕНТАЦИЯ СБОРНИКОВ ДЛЯ АЛЬТОВОЙ ДОМРЫ</p>
             <!-- end Презентация сборников title -->
           </div>
         </div>
@@ -1522,13 +1537,11 @@
       <div class="program-day-content">
         <div class="program-event-block">
           <h4 class="program-venue-header">ДОМ УЧЕНЫХ ИМ. М. Горького</h4>
-          <p class="program-venue-address">Дворцовая набережная, 26</p>
+          <p class="program-venue-address">Дворцовая набережная, 26. ДУБОВЫЙ ЗАЛ</p>
           
           <div class="program-time-block">
-            <p class="program-concert-title"><strong>19.00-20.30</strong> ЗАКРЫТИЕ ФЕСТИВАЛЯ. КОНЦЕРТ «АЛЬТОВАЯ ДОМРА+»</p>
-            
             <div class="program-concert-list">
-              <button type="button" class="program-concert-list-title">ПРОГРАММА КОНЦЕРТА</button>
+              <button type="button" class="program-concert-list-title program-concert-title"><strong>19.00-20.30</strong> ЗАКРЫТИЕ ФЕСТИВАЛЯ. КОНЦЕРТ «АЛЬТОВАЯ ДОМРА+»</button>
               <div class="program-concert-list-content">
                 <ol>
                   <li>В. Насонов Фантазия на тему русской песни «Винный мой колодезь»</li>
@@ -1548,7 +1561,7 @@
                 </ol>
               </div>
             </div>
-            <span class="program-free-label">Вход свободный</span>
+            <span class="program-ticket-link">Вход свободный</span>
           </div>
         </div>
       </div>
