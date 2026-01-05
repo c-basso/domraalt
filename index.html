@@ -1075,7 +1075,7 @@
     }
 
     .program-event-block {
-      background: #f9f9f9;
+      /* background: #f9f9f9; */
       padding: 20px;
       border-radius: 10px;
       margin-bottom: 25px;
@@ -1124,7 +1124,6 @@
     .program-concert-list-title {
       margin: 0 0 0px -12px;
       font-weight: 600;
-      color: #333;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -1198,19 +1197,19 @@
       display: inline-block;
       margin-top: 12px;
       padding: 10px 24px;
-      background: linear-gradient(135deg, #ff6b35, #ff8c42);
+      background: #ce3022;
       color: #fff;
       font-weight: 600;
       text-decoration: none;
       border-radius: 8px;
       transition: all 0.25s ease;
       font-size: 15px;
-      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+      box-shadow: 0 4px 12px rgba(206, 48, 34, 0.3);
     }
 
     .program-ticket-link:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
+      box-shadow: 0 6px 16px rgba(206, 48, 34, 0.4);
     }
 
     .program-free-label {
@@ -1382,7 +1381,7 @@
           
           <!-- begin of 12.00-15.00 Лекции и мастер-классы -->
           <div class="program-concert-list">
-            <button type="button" class="program-concert-list-title">12.00-15.00 ЛЕКЦИИ И МАСТЕР-КЛАССЫ</button>
+            <button type="button" class="program-concert-list-title program-concert-title"><strong>12.00-15.00</strong> ЛЕКЦИИ И МАСТЕР-КЛАССЫ</button>
             <div class="program-concert-list-content">
               <div class="program-time-block">
                 <p class="program-time-text"><strong>12.00-12.10</strong><br>
@@ -1441,7 +1440,7 @@
             <button type="button" class="program-concert-list-title">16.00-17.00 ВСТРЕЧА С МАСТЕРАМИ МУЗЫКАЛЬНЫХ ИНСТРУМЕНТОВ</button>
             <div class="program-concert-list-content">
               <div class="program-time-block">
-                <p class="program-time-text"><strong>16.00-17.00</strong><br>
+                <p class="program-time-text">
                 <strong>Встреча с мастерами музыкальных инструментов</strong><br>
                 И. Зверев, А. Байдаков, М. Харечкин, Юниор-домры (фабрика DOFF)</p>
               </div>
@@ -1450,10 +1449,8 @@
           <!-- end of 16.00-17.00 Встреча с мастерами музыкальных инструментов -->
           
           <div class="program-time-block">
-            <p class="program-concert-title"><strong>17.00-19.00</strong> КОНЦЕРТ «МАСТЕРА ЗВУКА»</p>
-            
             <div class="program-concert-list">
-              <button type="button" class="program-concert-list-title">ПРОГРАММА КОНЦЕРТА</button>
+              <button type="button" class="program-concert-list-title program-concert-title"><strong>17.00-19.00</strong> КОНЦЕРТ «МАСТЕРА ЗВУКА»</button>
               <div class="program-concert-list-content">
                 <ol>
                   <li><span class="performer-name">Ломова Екатерина</span> - А. Пиоттух Монолог для альтовой домры</li>
@@ -1487,10 +1484,8 @@
           <p class="program-venue-address">набережная реки Фонтанки, 34</p>
           
           <div class="program-time-block">
-            <p class="program-concert-title"><strong>12.00-13.30</strong> КОНЦЕРТ «ПУТЬ К МАСТЕРСТВУ»</p>
-            
             <div class="program-concert-list">
-              <button type="button" class="program-concert-list-title">ПРОГРАММА КОНЦЕРТА</button>
+              <button type="button" class="program-concert-list-title program-concert-title"><strong>12.00-13.30</strong> КОНЦЕРТ «ПУТЬ К МАСТЕРСТВУ»</button>
               <div class="program-concert-list-content">
                 <ol>
                   <li class="large-spacing"><span class="performer-name">Пьянкова София</span> (17 лет)<br>СПбМУ им. М. П. Мусоргского<br>Преподаватель <span class="performer-name">Чурина Наталья Александровна</span><br>И. С. Бах — Прелюдия из Сюиты для виолончели соло №1</li>
@@ -1513,7 +1508,9 @@
           </div>
           
           <div class="program-time-block">
+            <!-- begin Презентация сборников title -->
             <p class="program-time-text"><strong>13.30-14.00</strong> <strong>Презентация сборников для альтовой домры</strong></p>
+            <!-- end Презентация сборников title -->
           </div>
         </div>
       </div>
@@ -1665,7 +1662,7 @@
     <h2>Контакты</h2>
     <div class="contacts-container">
       <div class="contact-image-wrapper">
-        <img src="img/participants/churina.jpg" alt="Наталья Чурина" class="contact-image" />
+        <img src="img/participants/churina_contacts.jpg" alt="Наталья Чурина" class="contact-image" />
       </div>
       <div class="contact-info">
         <div class="contact-header">
