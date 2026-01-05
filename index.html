@@ -1015,7 +1015,7 @@
       color: #333;
       margin: 30px 0 20px 0;
       font-weight: 700;
-      border-bottom: 2px solid #ff8c42;
+      border-bottom: 2px solid #ce3022;
       padding-bottom: 10px;
       cursor: pointer;
       display: flex;
@@ -1026,14 +1026,14 @@
     }
 
     .program-day-header:hover {
-      color: #ff8c42;
+      color: #ce3022;
     }
 
     .program-day-header::after {
       content: '▼';
       font-size: 18px;
       transition: transform 0.3s ease;
-      color: #ff8c42;
+      color: #ce3022;
     }
 
     .program-day-header.active::after {
@@ -1072,7 +1072,7 @@
     }
 
     .program-time-block {
-      margin-top: 20px;
+      margin-bottom: 20px;
     }
 
     .program-time-block-small {
@@ -1087,17 +1087,18 @@
     .program-concert-title {
       margin: 0 0 15px 0;
       font-weight: 700;
-      color: #ff8c42;
+      color: #ce3022;
       font-size: 18px;
     }
 
     .program-concert-list {
-      margin-left: 20px;
+      margin-left: 0;
       margin-top: 15px;
+      margin-bottom: 15px;
     }
 
     .program-concert-list-title {
-      margin: 0 0 10px 0;
+      margin: 0 0 0px -12px;
       font-weight: 600;
       color: #333;
       cursor: pointer;
@@ -1130,7 +1131,7 @@
       content: '▼';
       font-size: 12px;
       transition: transform 0.3s ease;
-      color: #ff8c42;
+      color: #ce3022;
     }
 
     .program-concert-list-title.active::after {
@@ -1414,15 +1415,21 @@
           <h4 class="program-venue-header">ШЕРЕМЕТЕВСКИЙ ДВОРЕЦ</h4>
           <p class="program-venue-address">набережная реки Фонтанки, 34</p>
           
-          <div class="program-time-block">
-            <p class="program-time-text"><strong>16.00-17.00</strong><br>
-            <strong>Встреча с мастерами музыкальных инструментов</strong><br>
-            И. Зверев, А. Байдаков, М. Харечкин, Юниор-домры (фабрика DOFF)</p>
+          <!-- begin of 16.00-17.00 Встреча с мастерами музыкальных инструментов -->
+          <div class="program-concert-list">
+            <button type="button" class="program-concert-list-title">16.00-17.00 ВСТРЕЧА С МАСТЕРАМИ МУЗЫКАЛЬНЫХ ИНСТРУМЕНТОВ</button>
+            <div class="program-concert-list-content">
+              <div class="program-time-block">
+                <p class="program-time-text"><strong>16.00-17.00</strong><br>
+                <strong>Встреча с мастерами музыкальных инструментов</strong><br>
+                И. Зверев, А. Байдаков, М. Харечкин, Юниор-домры (фабрика DOFF)</p>
+              </div>
+            </div>
           </div>
+          <!-- end of 16.00-17.00 Встреча с мастерами музыкальных инструментов -->
           
           <div class="program-time-block">
-            <p class="program-concert-title"><strong>17.00-19.00</strong><br>
-            Концерт «Мастера звука»</p>
+            <p class="program-concert-title"><strong>17.00-19.00</strong> КОНЦЕРТ «МАСТЕРА ЗВУКА»</p>
             
             <div class="program-concert-list">
               <button type="button" class="program-concert-list-title">ПРОГРАММА КОНЦЕРТА</button>
@@ -1459,8 +1466,7 @@
           <p class="program-venue-address">набережная реки Фонтанки, 34</p>
           
           <div class="program-time-block">
-            <p class="program-concert-title"><strong>12.00-13.30</strong><br>
-            Концерт «Путь к мастерству»</p>
+            <p class="program-concert-title"><strong>12.00-13.30</strong> КОНЦЕРТ «ПУТЬ К МАСТЕРСТВУ»</p>
             
             <div class="program-concert-list">
               <button type="button" class="program-concert-list-title">ПРОГРАММА КОНЦЕРТА</button>
@@ -1486,8 +1492,7 @@
           </div>
           
           <div class="program-time-block">
-            <p class="program-time-text"><strong>13.30-14.00</strong><br>
-            <strong>Презентация сборников для альтовой домры</strong></p>
+            <p class="program-time-text"><strong>13.30-14.00</strong> <strong>Презентация сборников для альтовой домры</strong></p>
           </div>
         </div>
       </div>
@@ -1502,8 +1507,7 @@
           <p class="program-venue-address">Дворцовая набережная, 26</p>
           
           <div class="program-time-block">
-            <p class="program-concert-title"><strong>19.00 — 20.30</strong><br>
-            Закрытие фестиваля. Концерт «Альтовая домра+»</p>
+            <p class="program-concert-title"><strong>19.00-20.30</strong> ЗАКРЫТИЕ ФЕСТИВАЛЯ. КОНЦЕРТ «АЛЬТОВАЯ ДОМРА+»</p>
             
             <div class="program-concert-list">
               <button type="button" class="program-concert-list-title">ПРОГРАММА КОНЦЕРТА</button>
