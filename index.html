@@ -164,7 +164,7 @@
     .hamburger span {
       width: 100%;
       height: 4px;
-      background: #e28c16;
+      background: #ce3022;
       border-radius: 2px;
       transition: all 0.3s ease;
       transform-origin: center;
@@ -736,6 +736,14 @@
       opacity: 1;
       pointer-events: auto;
       transform: translateY(-6px);
+    }
+
+    /* Mobile styles - below 768px */
+    @media (max-width: 767px) {
+      .participant-image {
+        object-fit: contain;
+        height: 300px;
+      }
     }
 
     /* Tablet styles - 768px and up */
