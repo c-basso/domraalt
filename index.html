@@ -693,6 +693,146 @@
       transform: translateY(-3px);
     }
 
+    /* Support Modal Styles */
+    .support-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 1000000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .support-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .support-modal-content {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .support-modal.active .support-modal-content {
+      transform: scale(1);
+    }
+
+    .support-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: transparent;
+      border: none;
+      font-size: 28px;
+      color: #999;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.2s ease;
+      line-height: 1;
+      padding: 0;
+    }
+
+    .support-modal-close:hover {
+      background: rgba(0, 0, 0, 0.05);
+      color: #333;
+    }
+
+    .support-modal-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #333;
+      margin: 0 0 24px 0;
+      text-align: center;
+      letter-spacing: -0.2px;
+    }
+
+    .support-modal-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .support-modal-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, #ff6b35, #ff8c42);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+      min-height: 52px;
+    }
+
+    .support-modal-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+    }
+
+    .support-modal-link.secondary {
+      background: #f5f5f5;
+      color: #333;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .support-modal-link.secondary:hover {
+      background: #e8e8e8;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .support-modal-link-img {
+      height: 32px;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    .support-modal-link-img-tbank {
+      height: 52px;
+    }
+
+    @media (max-width: 480px) {
+      .support-modal-content {
+        padding: 24px;
+        border-radius: 12px;
+      }
+
+      .support-modal-title {
+        font-size: 20px;
+        margin: 0 0 20px 0;
+      }
+
+      .support-modal-link {
+        padding: 14px 20px;
+        font-size: 15px;
+        min-height: 48px;
+      }
+    }
+
     /* Hero large logo */
     .hero-logo {
       display: flex;
@@ -1764,7 +1904,7 @@
       </a>
     </div>
     <div style="text-align: center; margin-top: 24px;">
-      <a href="https://www.tbank.ru/cf/2qotwfazO64" target="_blank" rel="noopener noreferrer" class="btn">Поддержать проект</a>
+      <button type="button" class="btn" id="supportBtn" style="border: none; cursor: pointer;">Поддержать проект</button>
       <p style="margin-top: 10px; font-size: 13px; color: #555;" id="support-text">
         Средства будут направлены на билеты и проживание участников, полиграфическую продукцию, фотосъёмку и другие организационные расходы фестиваля.
       </p>
@@ -1804,6 +1944,22 @@
   </footer>
 
   <button id="backToTop" aria-label="Наверх">↑</button>
+
+  <!-- Support Modal -->
+  <div class="support-modal" id="supportModal" role="dialog" aria-labelledby="supportModalTitle" aria-modal="true">
+    <div class="support-modal-content">
+      <button class="support-modal-close" id="supportModalClose" aria-label="Закрыть">×</button>
+      <h3 class="support-modal-title" id="supportModalTitle"></h3>
+      <div class="support-modal-links">
+        <a href="https://www.tbank.ru/cf/2qotwfazO64" target="_blank" rel="noopener noreferrer" class="support-modal-link secondary">
+          <img src="img/tinkoff.svg" alt="T-Bank" class="support-modal-link-img support-modal-link-img-tbank" />
+        </a>
+        <a href="https://yoomoney.ru/fundraise/1F4EJCA3HCC.260106" target="_blank" rel="noopener noreferrer" class="support-modal-link secondary">
+          <img src="img/iomoney.svg" alt="ЮMoney" class="support-modal-link-img" />
+        </a>
+      </div>
+    </div>
+  </div>
 
   <script>
     // Hamburger menu toggle
@@ -1992,6 +2148,41 @@
         }
       });
     });
+
+    // Support Modal functionality
+    const supportBtn = document.getElementById('supportBtn');
+    const supportModal = document.getElementById('supportModal');
+    const supportModalClose = document.getElementById('supportModalClose');
+
+    if (supportBtn && supportModal) {
+      supportBtn.addEventListener('click', function() {
+        supportModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+
+      function closeModal() {
+        supportModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      if (supportModalClose) {
+        supportModalClose.addEventListener('click', closeModal);
+      }
+
+      // Close modal when clicking outside
+      supportModal.addEventListener('click', function(e) {
+        if (e.target === supportModal) {
+          closeModal();
+        }
+      });
+
+      // Close modal on Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && supportModal.classList.contains('active')) {
+          closeModal();
+        }
+      });
+    }
   </script>
 
 
