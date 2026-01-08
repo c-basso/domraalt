@@ -878,16 +878,16 @@
       transform: translateY(-6px);
     }
 
-    /* Mobile styles - below 768px */
-    @media (max-width: 767px) {
+    /* Mobile styles - below 744px */
+    @media (max-width: 743px) {
       .participant-image {
         object-fit: contain;
         height: 300px;
       }
     }
 
-    /* Tablet styles - 768px and up */
-    @media (min-width: 768px) {
+    /* Tablet styles - 744px and up (includes iPad mini) */
+    @media (min-width: 744px) {
       body {
         background-attachment: fixed;
         background-size: cover;
@@ -902,26 +902,35 @@
         height: 40px;
       }
 
+      /* Keep hamburger menu for tablets and iPad mini */
       .hamburger {
-        display: none;
+        display: flex;
       }
 
+      /* Nav links stay in dropdown menu for tablets */
       .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #EEE0C5;
+        flex-direction: column;
+        padding: 12px 16px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        max-height: 0;
+        overflow: hidden;
+      }
+
+      .nav-links.active {
         display: flex;
-        gap: 18px;
-        align-items: center;
-        position: static;
-        flex-direction: row;
-        padding: 0;
-        box-shadow: none;
-        border-top: none;
-        max-height: none;
-        background: transparent;
+        max-height: 500px;
       }
 
       .nav-links a {
-        width: auto;
-        justify-content: center;
+        width: 100%;
+        justify-content: flex-start;
       }
 
       header {
@@ -1125,9 +1134,29 @@
         height: 40px;
       }
 
+      /* Show inline nav links on desktop */
+      .hamburger {
+        display: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+        position: static;
+        flex-direction: row;
+        padding: 0;
+        box-shadow: none;
+        border-top: none;
+        max-height: none;
+        background: transparent;
+      }
+
       .nav-links a {
         font-size: 16px;
         padding: 8px 12px;
+        width: auto;
+        justify-content: center;
       }
 
       header {
@@ -1476,24 +1505,60 @@
         height: 30px;
       }
 
-      header {
-        padding: 70px 12px 0;
+      .nav-links {
+        padding: 8px 12px;
       }
 
-      header::before {
-        filter: blur(2px);
+      .nav-links a {
+        font-size: 18px;
+        padding: 10px 12px;
+        min-height: 40px;
+      }
+    }
+
+    /* Extra small screens - 400px and below (e.g., Galaxy Z Fold folded) */
+    @media (max-width: 400px) {
+      .topnav .nav-inner {
+        padding: 8px 10px;
+      }
+
+      .logo {
+        height: 26px;
+      }
+
+      .hamburger {
+        width: 28px;
+        height: 28px;
+      }
+
+      .hamburger span {
+        height: 3px;
+      }
+
+      .nav-links {
+        padding: 6px 10px;
+      }
+
+      .nav-links a {
+        font-size: 16px;
+        padding: 8px 10px;
+        min-height: 38px;
+      }
+
+      header {
+        padding: 64px 10px 0;
       }
 
       header h1 {
-        font-size: 20px;
+        font-size: 18px;
       }
 
       header h2 {
-        font-size: 24px;
+        font-size: 22px;
       }
 
       header p {
-        font-size: 14px;
+        font-size: 13px;
       }
 
       section {
@@ -1540,6 +1605,14 @@
         padding: 8px 16px;
         font-size: 13px;
         min-height: 44px;
+      }
+
+      section {
+        padding: 16px 10px;
+      }
+
+      section h2 {
+        font-size: 20px;
       }
     }
   </style>
@@ -1725,8 +1798,8 @@
 
     <!-- Day 2 -->
     <div class="program-day">
-      <h3 class="program-day-header">2-й день 1.02.2026 (воскресенье)</h3>
-      <div class="program-day-content">
+      <h3 class="program-day-header active">2-й день 1.02.2026 (воскресенье)</h3>
+      <div class="program-day-content active">
         <div id="competition-program" class="program-event-block">
           <h4 class="program-venue-header">ШЕРЕМЕТЕВСКИЙ ДВОРЕЦ</h4>
           <p class="program-venue-address">набережная реки Фонтанки, 34. ЗАЛ ДОМОВОЙ ЦЕРКВИ</p>
@@ -1766,8 +1839,8 @@
 
     <!-- Day 3 -->
     <div class="program-day">
-      <h3 class="program-day-header">3-й день 2.02.2026 (понедельник)</h3>
-      <div class="program-day-content">
+      <h3 class="program-day-header active">3-й день 2.02.2026 (понедельник)</h3>
+      <div class="program-day-content active">
         <div class="program-event-block">
           <h4 class="program-venue-header">ДОМ УЧЕНЫХ ИМ. М. Горького</h4>
           <p class="program-venue-address">Дворцовая набережная, 26. ДУБОВЫЙ ЗАЛ</p>
@@ -1972,7 +2045,7 @@
         mobileNav.classList.toggle('active');
         this.setAttribute('aria-expanded', isActive);
         
-        // Close menu when clicking on a nav link (mobile only)
+        // Close menu when clicking on a nav link (mobile and tablet)
         if (isActive) {
           const navLinkItems = mobileNav.querySelectorAll('a');
           navLinkItems.forEach(link => {
@@ -1987,9 +2060,9 @@
         }
       });
       
-      // Close menu when clicking outside (mobile only)
+      // Close menu when clicking outside (mobile and tablet, up to 1024px)
       document.addEventListener('click', function(e) {
-        if (window.innerWidth < 768) {
+        if (window.innerWidth < 1024) {
           if (mobileNav.classList.contains('active') && 
               !mobileNav.contains(e.target) && 
               !hamburger.contains(e.target)) {
