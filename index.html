@@ -849,33 +849,60 @@
       background: rgba(255, 255, 255, 0.02);
     }
 
-    /* Back to top */
-    #backToTop {
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: #333;
-      color: #fff;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 6px 18px rgba(51, 51, 51, 0.25);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .2s ease, transform .18s ease;
-      z-index: 140;
-      cursor: pointer;
-      font-size: 24px;
+    /* Support button - fixed and always visible */
+    #supportBtn {
+      position: fixed !important;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 22px;
+      z-index: 100001 !important;
+      margin-top: 0 !important;
+      background: linear-gradient(135deg, #ce3022, #e63946) !important;
+      box-shadow: 0 6px 18px rgba(206, 48, 34, 0.4);
+      animation: pulse 2s ease-in-out infinite;
+      padding: 16px 36px !important;
+      font-size: 18px !important;
+      min-height: 56px !important;
+      white-space: nowrap !important;
+      pointer-events: auto !important;
+      cursor: pointer !important;
+      transition: all 0.3s ease;
     }
 
-    #backToTop.show {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(-6px);
+    #supportBtn.in-place {
+      position: relative !important;
+      left: auto !important;
+      transform: none !important;
+      bottom: auto !important;
+      margin: 30px auto 0 !important;
+      display: inline-flex !important;
+      animation: none !important;
+    }
+
+    #supportBtn:hover,
+    #supportBtn:active,
+    #supportBtn:focus {
+      background: linear-gradient(135deg, #b0271a, #ce3022) !important;
+      box-shadow: 0 8px 24px rgba(206, 48, 34, 0.5);
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: translateX(-50%) scale(1);
+      }
+      50% {
+        transform: translateX(-50%) scale(1.05);
+      }
+    }
+
+    /* Hide support button text when button is fixed, show when in-place */
+    #partners #support-text {
+      display: none;
+    }
+    
+    /* Show text when button is in its original position */
+    #supportBtn.in-place + #support-text {
+      display: block !important;
     }
 
     /* Mobile styles - below 744px */
@@ -1111,11 +1138,13 @@
         font-size: 14px;
       }
 
-      #backToTop {
-        width: 48px;
-        height: 48px;
-        right: 18px;
-        bottom: 18px;
+      #supportBtn {
+        left: 50%;
+        bottom: 12px;
+        padding: 14px 28px !important;
+        font-size: 16px !important;
+        min-height: 52px !important;
+        white-space: nowrap !important;
       }
 
       .btn {
@@ -1614,6 +1643,15 @@
       section h2 {
         font-size: 20px;
       }
+
+      #supportBtn {
+        left: 50%;
+        bottom: 8px;
+        padding: 12px 24px !important;
+        font-size: 15px !important;
+        min-height: 48px !important;
+        white-space: nowrap !important;
+      }
     }
   </style>
 </head>
@@ -2016,8 +2054,6 @@
     <p>Все права защищены</p>
   </footer>
 
-  <button id="backToTop" aria-label="Наверх">↑</button>
-
   <!-- Support Modal -->
   <div class="support-modal" id="supportModal" role="dialog" aria-labelledby="supportModalTitle" aria-modal="true">
     <div class="support-modal-content">
@@ -2100,13 +2136,6 @@
       });
     }, { threshold: 0.12 });
     sections.forEach(s => obs.observe(s));
-
-    // Back to top button
-    const backBtn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 320) backBtn.classList.add('show'); else backBtn.classList.remove('show');
-    });
-    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
     // Update active nav link
     const navLinks = document.querySelectorAll('.nav-links a');
@@ -2226,9 +2255,32 @@
     const supportBtn = document.getElementById('supportBtn');
     const supportModal = document.getElementById('supportModal');
     const supportModalClose = document.getElementById('supportModalClose');
+    
+    // Make support button return to original position when scrolled to it
+    const supportBtnContainer = supportBtn ? supportBtn.parentElement : null;
+    if (supportBtn && supportBtnContainer) {
+      const supportBtnObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Button container is visible, return button to original position
+            supportBtn.classList.add('in-place');
+          } else {
+            // Button container is not visible, keep button fixed
+            supportBtn.classList.remove('in-place');
+          }
+        });
+      }, {
+        threshold: 0.3,
+        rootMargin: '-100px 0px -100px 0px'
+      });
+      
+      supportBtnObserver.observe(supportBtnContainer);
+    }
 
     if (supportBtn && supportModal) {
-      supportBtn.addEventListener('click', function() {
+      supportBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
         supportModal.classList.add('active');
         document.body.style.overflow = 'hidden';
       });
