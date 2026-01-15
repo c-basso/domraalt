@@ -759,9 +759,9 @@
     }
 
     .support-modal-title {
-      font-size: 24px;
+      font-size: 14px;
       font-weight: 700;
-      color: #333;
+      color: #b0271a;
       margin: 0 0 24px 0;
       text-align: center;
       letter-spacing: -0.2px;
@@ -777,6 +777,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 12px;
       padding: 16px 24px;
       background: linear-gradient(135deg, #ff6b35, #ff8c42);
       color: #fff;
@@ -787,6 +788,12 @@
       transition: all 0.25s ease;
       box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
       min-height: 52px;
+    }
+
+    .support-modal-link-text {
+      line-height: 1.1;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
     }
 
     .support-modal-link:hover {
@@ -2067,7 +2074,7 @@
   <div class="support-modal" id="supportModal" role="dialog" aria-labelledby="supportModalTitle" aria-modal="true">
     <div class="support-modal-content">
       <button class="support-modal-close" id="supportModalClose" aria-label="Закрыть">×</button>
-      <h3 class="support-modal-title" id="supportModalTitle"></h3>
+      <h3 class="support-modal-title" id="supportModalTitle">ОПЛАТА С КАРТЫ ЛЮБОГО БАНКА</h3>
       <div class="support-modal-links">
         <a href="https://www.tbank.ru/cf/2qotwfazO64" target="_blank" rel="noopener noreferrer" class="support-modal-link secondary">
           <img src="img/tinkoff.svg" alt="T-Bank" class="support-modal-link-img support-modal-link-img-tbank" />
@@ -2075,6 +2082,10 @@
         <a href="https://yoomoney.ru/fundraise/1F4EJCA3HCC.260106" target="_blank" rel="noopener noreferrer" class="support-modal-link secondary">
           <img src="img/iomoney.svg" alt="ЮMoney" class="support-modal-link-img" />
         </a>
+        <span class="support-modal-link secondary" aria-label="СБП: +7 904 518-41-67">
+          <img src="img/sbp.png" alt="СБП" class="support-modal-link-img" />
+          <span class="support-modal-link-text">+7 904 518-41-67</span>
+        </span>
       </div>
     </div>
   </div>
